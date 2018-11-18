@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="33d47b90-8668-4eba-b083-8a2297764b41" name="aaa" url="http://localhost:8888/BrinqueFeliz/APWEB-BriqueFeliz/">
+        <fileTransfer port="0" accessType="LOCAL" />
+      </webServer>
+    </option>
+  </component>
+</project>
