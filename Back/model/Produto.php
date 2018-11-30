@@ -16,8 +16,6 @@ class Produto {
     private $codigo_de_barras;
     private $nome;
     private $descricao;
-    private $preco_de_venda;
-    private $quantidade_em_estoque;
 
     public function Produto($nome, $quantidade_em_estoque) {
         $this->nome = $nome;
@@ -34,14 +32,6 @@ class Produto {
 
     public function getDescricao() {
         return $this->descricao;
-    }
-
-    public function getPreco_de_venda() {
-        return $this->preco_de_venda;
-    }
-
-    public function getQuantidade_em_estoque() {
-        return $this->quantidade_em_estoque;
     }
 
 }
