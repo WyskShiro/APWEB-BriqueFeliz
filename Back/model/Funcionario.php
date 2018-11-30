@@ -13,7 +13,6 @@
  */
 class Funcionario {
 
-    private $matricula;
     private $cpf;
     private $nome;
     private $endereco;
@@ -27,10 +26,6 @@ class Funcionario {
     public function Funcionario($nome, $email) {
         $this->nome = $nome;
         $this->email = $email;
-    }
-
-    public function getMatricula() {
-        return $this->matricula;
     }
 
     public function getCpf() {

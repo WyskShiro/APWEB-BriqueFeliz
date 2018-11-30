@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
     <meta charset="UTF-8">
@@ -53,14 +52,20 @@
     </div>
 
     <div class="container-fluid">
-        <div class="btn-group-vertical" role="group" aria-label="Opções menu">
-            <button type="button" class="btn btn-secondary">Carrinho de compras</button>
-            <button type="button" class="btn btn-secondary">Produtos</button>
-            <button type="button" class="btn btn-secondary">Funcionários</button>
-            <button type="button" class="btn btn-secondary">Clientes</button>
-            <button type="button" class="btn btn-secondary">Fornecedores</button>
-            <button type="button" class="btn btn-secondary">Relatórios</button>
-        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#gerenciar_funcionario.php">Gerenciar Funcionario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Desativado</a>
+            </li>
+        </ul>
     </div>
 
 

@@ -18,7 +18,7 @@ class FuncionarioFactory extends AbstractFactory {
     //put your code here
 
     public function buscar($param) {
-        $sql = "SELECT * FROM Funcionario where email = '" . $param . "'";
+        $sql = "SELECT * FROM funcionario where funcionario_id = '" . $param . "'";
         try {
             $result = $this->db->query($sql);
 
@@ -31,7 +31,7 @@ class FuncionarioFactory extends AbstractFactory {
     }
 
     public function listar() {
-        $sql = "SELECT * FROM Funcionario";
+        $sql = "SELECT * FROM funcionario";
         try {
             $result = $this->db->query($sql);
 
@@ -46,9 +46,16 @@ class FuncionarioFactory extends AbstractFactory {
     public function salvar($obj) {
         $Funcionario = $obj;
         try {
-            $sql = "INSERT INTO  Funcionario(nome,email)" .
+            $sql = "INSERT INTO  funcionario(nome,cpf,endereco,cidade,estado,telefone_residencial,telefone_celular,email,data_contratacao)" .
                     "VALUES ( '" . $Funcionario->getNome() . "', '"
-                    . $Funcionario->getEmail() . "')";
+                    . $Funcionario->getCpf() . "', '"
+                    . $Funcionario->getEndereco() . "', '"
+                    . $Funcionario->getCidade() . "', '"
+                    . $Funcionario->getEstado() . "', '"
+                    . $Funcionario->getTelefone_residencial() . "', '"
+                    . $Funcionario->getTelefone_celular() . "', '"
+                    . $Funcionario->getEmail()
+                    . $Funcionario->getDataContratacao(). "')";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
@@ -63,7 +70,7 @@ class FuncionarioFactory extends AbstractFactory {
 
     public function deletar($param) {
         try {
-            $sql = "DELETE FROM Funcionario where email= '" . $param . "'";
+            $sql = "DELETE FROM Funcionario where funcionario_id = '" . $param . "'";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
