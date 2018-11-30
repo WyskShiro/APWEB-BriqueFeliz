@@ -1,74 +1,75 @@
-
---
--- Database: `brinque_feliz_production_full`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cliente`
---
-
-CREATE TABLE `cliente` (
-  `cliente_id` int(11) NOT NULL PRIMARY KEY,
-  `cpf` varchar(11)  NOT NULL,
-  `nome` varchar(30)  NOT NULL,
-  `endereco` varchar(35)  NOT NULL,
-  `cidade` varchar(20)  NOT NULL,
-  `estado` varchar(20)  NOT NULL,
-  `tefelone` varchar(11)  NOT NULL,
-  `email` varchar(25)  DEFAULT NULL
+CREATE TABLE 'cliente' (
+  'cliente_id' INTEGER PRIMARY KEY,
+  'cpf' TEXT  NOT NULL,
+  'nome' TEXT  NOT NULL,
+  'endereco' TEXT  NOT NULL,
+  'cidade' TEXT  NOT NULL,
+  'estado' TEXT  NOT NULL,
+  'tefelone' TEXT  NOT NULL,
+  'email' TEXT NOT NULL
 );
 
--- --------------------------------------------------------
 
---
--- Table structure for table `fornecedor`
---
-
-CREATE TABLE `fornecedor` (
-  `fornecedor_id` int(11) NOT NULL PRIMARY KEY,
-  `cnpj` varchar(14)  NOT NULL,
-  `nome_fantasia` varchar(30)  NOT NULL,
-  `razao_social` varchar(30)  NOT NULL,
-  `endereco` varchar(50)  NOT NULL,
-  `cidade` varchar(20)  NOT NULL,
-  `estado` varchar(20)  NOT NULL,
-  `telefone` varchar(11)  NOT NULL,
-  `email` varchar(30)  DEFAULT NULL
+CREATE TABLE 'fornecedor' (
+  'fornecedor_id' INTEGER PRIMARY KEY,
+  'cnpj' TEXT NOT NULL,
+  'nome_fantasia' TEXT  NOT NULL,
+  'razao_social' TEXT  NOT NULL,
+  'endereco' TEXT  NOT NULL,
+  'cidade' TEXT  NOT NULL,
+  'estado' TEXT  NOT NULL,
+  'telefone' TEXT  NOT NULL,
+  'email' TEXT NOT NULL
 ) ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `funcionario`
---
-
-CREATE TABLE `funcionario` (
-  `funcionario_id` int(11) NOT NULL PRIMARY KEY,
-  `cpf` int(11) NOT NULL,
-  `nome` varchar(35)  NOT NULL,
-  `endereco` varchar(40)  NOT NULL,
-  `cidade` varchar(20)  NOT NULL,
-  `estado` varchar(20)  NOT NULL,
-  `telefone_residencial` varchar(10)  NOT NULL,
-  `telefone_celular` varchar(11)  DEFAULT NULL,
-  `email` varchar(30)  DEFAULT NULL,
-  `data_contratacao` date NOT NULL
+CREATE TABLE 'funcionario' (
+  'funcionario_id' INTEGER PRIMARY KEY,
+  'cpf' INTEGER NOT NULL,
+  'nome' TEXT  NOT NULL,
+  'endereco' TEXT NOT NULL,
+  'cidade' TEXT  NOT NULL,
+  'estado' TEXT  NOT NULL,
+  'telefone_residencial' TEXT NOT NULL,
+  'telefone_celular' TEXT  NOT NULL,
+  'email' TEXT  NOT NULL,
+  'data_contratacao' date NOT NULL
 ) ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `produto`
---
-
-CREATE TABLE `produto` (
-  `produto_id` int(11) NOT NULL PRIMARY KEY,
-  `codigo_de_barras` int(11) NOT NULL,
-  `nome` varchar(30)  NOT NULL,
-  `descricao` text ,
-  `preco_venda` float NOT NULL,
-  `fornecedor_id` int(11) NOT NULL
+CREATE TABLE 'produto' (
+  'produto_id' INTEGER PRIMARY KEY,
+  'codigo_de_barras' INTEGER NOT NULL,
+  'nome' TEXT  NOT NULL,
+  'descricao' text
 );
 
+
+CREATE TABLE 'venda' (
+  'venda_id' INTEGER PRIMARY KEY,
+  'valor_total' float NOT NULL,
+  'metodo_pagamento' TEXT not null,
+  'desconto' float,
+  'cliente_id' INTEGER,
+  'funcionario_id' INTEGER,
+  FOREIGN KEY('cliente_id') REFERENCES cliente('cliente_id'),
+  FOREIGN KEY('funcionario_id') REFERENCES funcionario('funcionario_id')
+);
+
+CREATE TABLE 'produto_venda' (
+  'venda_id' INTEGER,
+  'produto_estoque_id' INTEGER,
+  'quantidade' INTEGER NOT NULL,
+  FOREIGN KEY('venda_id') REFERENCES venda('venda_id'),
+  FOREIGN KEY('produto_estoque_id') REFERENCES produto_estoque('produto_estoque_id')
+);
+
+
+CREATE TABLE 'produto_estoque' (
+  'produto_estoque_id' INTEGER PRIMARY KEY,
+  'preco_compra' float NOT NULL ,
+  'preco_venda' float NOT NULL,
+  'quantidade' INTEGER NOT NULL,
+  'fornecedor_id' INTEGER,
+  'produto_id' INTEGER,
+  FOREIGN KEY('fornecedor_id') REFERENCES fornecedor('fornecedor_id'),
+  FOREIGN KEY('produto_id') REFERENCES produto('produto_id')
+);
