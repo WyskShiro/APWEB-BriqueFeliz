@@ -29,8 +29,6 @@
 
                 <div class="row justify-content-center">
                     <div class="col-6 col-sm-6">
-                        <h3>Entrar</h3>
-
                         <!--
                         FORMULÁRIO PARA LOGAR
                             -->
