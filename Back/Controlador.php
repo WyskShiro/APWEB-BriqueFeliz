@@ -28,6 +28,18 @@ class Controlador {
             case 'gerenciar_funcionario':
                 $this->gerenciarFuncionario();
                 break;
+            case 'cadastrar_funcionario':
+                $this->cadastrarFuncionario();
+                break;
+            case 'alterar_funcionario':
+                $this->alterarFuncionario();
+                break;
+            case 'excluir_funcionario':
+                $this->excluirFuncionario();
+                break;
+            case 'alterar_permissao':
+                $this->alterarPermissao();
+                break;
             default:
                 $this->home();
                 break;
@@ -47,10 +59,54 @@ class Controlador {
         }
     }
 
+    /**
+     * Funcionário
+     */
+
     public function gerenciarFuncionario() {
         require 'Front/HTML/funcionario/gerenciar_funcionario.php';
     }
 
+
+    public function cadastrarFuncionario() {
+        require 'Front/HTML/funcionario/cadastrar_funcionario.php';
+    }
+
+    //TODO: dar fetch no banco de dados da lista de funcs e retornar 
+    public function alterarFuncionario() {
+        $listaFuncionarios = [];
+
+        require 'Front/HTML/funcionario/cadastrar_funcionario.php';
+    }
+
+    public function excluirFuncionario() {
+        require 'Front/HTML/funcionario/excluir_funcionario.php';
+    }
+
+    public function alterarPermissao() {
+        require 'Front/HTML/funcionario/alterar_permissao.php';
+    }
+
+
+    /**
+     * Cliente
+     */
+
+     /**
+     * Fornecedor
+     */
+
+     /**
+     * Produto
+     */
+
+     /**
+     * Venda
+     */
+
+    /**
+     * Outros
+     */
     public static function autenticarUsuario() {
         return true;
     }

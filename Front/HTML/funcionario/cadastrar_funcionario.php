@@ -18,6 +18,8 @@
 </head>
 
 <body>
+    <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php'?>
+
     <div class="container">
         <h3>Adicionar Funcionário</h3>
         <ul class="nav justify-content-end">
@@ -30,8 +32,19 @@
         </ul>
     </div>
 
+    <!--
+        ----- TODO se tiver dados de funcionário vindo do servidor -> carregá-los nos elementos
+    -->
     <div class="container">
         <form method="post">
+
+            <?php
+            /**
+             * SE TIVER VINDO DADOS -> SETAR UMA VARIAVEL DE CONTROLE DE ALTERAR COMO TRUE
+             * **** UTILIZAR PARA DIFERENCIAR ALTERAR DE ADICIONAR
+             */
+            ?>
+
             <div class="form-group">
                 <label for="nomeFuncionario">Nome:</label>
                 <input type="text" class="form-control" id="nomeFuncionario" aria-describedby="emailHelp" placeholder="Nome">
