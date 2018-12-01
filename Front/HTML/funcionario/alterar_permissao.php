@@ -10,7 +10,6 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -19,15 +18,31 @@
 </head>
 
 <body>
+    <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php'?>
 
-    <!--
-        ----- WK: Eu não faço ideia do que seja isso, nem onde usar isso
-    -->
-    <div class="container-fluid">
-        <p class="h1">Acesso Rápido</h2>
-            <button type="button" class="btn btn-outline-primary">Personalizar</button>
+    <div class="container">
+        <h3>Excluir Funcionário</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome do Funcionário</th>
+                    <th>Permissão atual</th>
+                    <th>Trocar permissão ?</th>
+                </tr>
+            </thead>
+            <!--
+                ++++++ TODO: Para cada funcionário, ....
+            -->
+            <tbody>
+                <tr>
+                    <td>Func X</td>
+                    <td>Func X-> Permissão</td>
+                    <td><a href="?funcao=alterar_permissao&id=ALGUM ID" class="btn btn-danger">Alterar para
+                            INVERSO_DO_ATUAL</a></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
 
 
 

@@ -4,18 +4,18 @@ abstract class AbstractFactory {
 
     protected $db;
 
-    public function AbstractFactory() {
+    public function __construct() {
 
         try {
-            $this->db = new PDO("sqlite:model/brinque_feliz.sqlite");
-			
-			$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-			
+            $this->db = new PDO("sqlite:Back/model/brinque_feliz.sqlite");
+            
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+
         } catch (PDOException $exception) {
             echo $exception->getMessage();
         } catch (Exception $exception) {
             echo $exception->getMessage();
-        }
+        } 
     }
 
     /**
@@ -53,7 +53,7 @@ abstract class AbstractFactory {
         $list = array();
         $result = $result->fetchAll(PDO::FETCH_NUM);
         foreach ($result as $row) {
-            unset($row[0]);
+            //unset($row[0]);
             $ref = new ReflectionClass($nameObject);
             $list[] = $ref->newInstanceArgs($row);
         }
