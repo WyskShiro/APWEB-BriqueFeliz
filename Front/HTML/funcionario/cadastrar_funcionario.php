@@ -37,6 +37,7 @@
     -->
     <div class="container">
         <form method="post">
+            <input type="hidden" name="funcao" value="cadastrar_funcionario_banco" />
 
             <?php
             /**
@@ -47,42 +48,46 @@
 
             <div class="form-group">
                 <label for="nomeFuncionario">Nome:</label>
-                <input type="text" class="form-control" id="nomeFuncionario" aria-describedby="emailHelp" placeholder="Nome">
+                <input type="text" class="form-control" id="nomeFuncionario" name="nome" aria-describedby="emailHelp"
+                    placeholder="Nome">
             </div>
             <div class="form-group">
                 <label for="cpfFuncionario">CPF</label>
-                <input type="text" class="form-control" id="cpfFuncionario" placeholder="xxx.xxx.xxx-xx">
+                <input type="text" class="form-control" id="cpfFuncionario" name="cpf" placeholder="xxx.xxx.xxx-xx">
             </div>
             <div class="form-group">
                 <label for="enderecoFuncionario">Endereço</label>
-                <input type="text" class="form-control" id="enrerecoFuncionario" placeholder="Endereço">
+                <input type="text" class="form-control" id="enderecoFuncionario" name="endereco" placeholder="Endereço">
             </div>
             <div class="form-group">
                 <label for="cidadeFuncionario">Cidade</label>
-                <input type="text" class="form-control" id="cidadeFuncionario" placeholder="Cidade">
+                <input type="text" class="form-control" id="cidadeFuncionario" name="cidade" placeholder="Cidade">
             </div>
             <div class="form-group">
                 <label for="estadoFuncionario">Estado</label>
-                <input type="text" class="form-control" id="estadoFuncionario" placeholder="Estado">
+                <input type="text" class="form-control" id="estadoFuncionario" name="estado" placeholder="Estado">
             </div>
             <div class="form-group">
-                <label for="telefoneResidencialFuncionario">Telefone Fixo</label>
-                <input type="text" class="form-control" id="telefoneResidencialFuncionario" placeholder="(xx) xxxx - xxxx">
+                <label for="telefoneResidencialFuncionario">Telefone Residencial</label>
+                <input type="text" class="form-control" id="telefoneResidencialFuncionario" name="telefoneResidencial"
+                    placeholder="(xx) xxxx - xxxx">
             </div>
             <div class="form-group">
-                <label for="celularFuncionario">Telefone Celular</label>
-                <input type="text" class="form-control" id="celularFuncionario" placeholder="(xx) xxxxx-xxxx">
+                <label for="telefoneCelularFuncionario">Telefone Celular</label>
+                <input type="text" class="form-control" id="telefoneCelularFuncionario" name="telefoneCelular"
+                    placeholder="(xx) xxxxx-xxxx">
             </div>
             <div class="form-group">
                 <label for="emailFuncionario">Email</label>
-                <input type="email" class="form-control" id="emailFuncionario" placeholder="Email">
+                <input type="email" class="form-control" id="emailFuncionario" name="email" placeholder="Email">
             </div>
             <div class="form-group">
                 <label for="dataContratacaoFuncionario">Data de contratação</label>
-                <input type="date" class="form-control" id="dataContratacaoFuncionario" placeholder="">
+                <input type="date" class="form-control" id="dataContratacaoFuncionario" name="dataContratacao"
+                    placeholder="">
             </div>
 
-            <button type="submit" value='cadastrarFuncionario' class="btn btn-primary">Enviar</button>
+            <input type="submit" value='Enviar' class="btn btn-primary" />
         </form>
     </div>
 

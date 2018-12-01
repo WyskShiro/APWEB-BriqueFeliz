@@ -32,11 +32,29 @@
             <!--
                 ++++++ TODO: Para cada funcionário, ....
             -->
+            <?php
+                foreach($listaFuncionarios as $funcionario) {
+
+                
+            ?>
             <tbody>
                 <tr>
-                    <td>Func X</td>
-                    <td><button class="btn btn-danger">Deletar</button></td>
+                    <td>
+                        <?php echo $funcionario->getNome() ?>
+                    </td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="funcao" value="excluir_funcionario_banco">
+                            <input type="hidden" name="funcionario_id" value="<?php echo $funcionario->getId()?>">
+                            <input class="btn btn-danger" type="submit" value="Deletar">
+                        </form>
+                    </td>
                 </tr>
+
+
+                <?php
+                    }
+                ?>
             </tbody>
         </table>
     </div>

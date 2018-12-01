@@ -13,19 +13,33 @@
  */
 class Funcionario {
 
+    private $id;
     private $cpf;
     private $nome;
     private $endereco;
     private $cidade;
     private $estado;
-    private $telefone_residencial;
-    private $telefone_celular;
+    private $telefoneResidencial;
+    private $telefoneCelular;
     private $email;
-    private $data_contratacao;
-    
-    public function Funcionario($nome, $email) {
+    private $dataContratacao;
+
+
+    public function __construct($id, $cpf, $nome, $endereco, $cidade, $estado, $telefoneResidencial, $telefoneCelular, $email, $dataContratacao) {
+        $this->id = $id;
+        $this->cpf = $cpf;
         $this->nome = $nome;
+        $this->endereco = $endereco;
+        $this->cidade = $cidade;
+        $this->estado = $estado;
+        $this->telefoneResidencial = $telefoneResidencial;
+        $this->telefoneCelular = $telefoneCelular;
         $this->email = $email;
+        $this->dataContratacao = $dataContratacao;
+    }
+
+    public function getId() {
+        return $this->id;
     }
 
     public function getCpf() {
@@ -48,12 +62,12 @@ class Funcionario {
         return $this->estado;
     }
 
-    public function getTelefone_residencial() {
-        return $this->telefone_residencial;
+    public function gettelefoneResidencial() {
+        return $this->telefoneResidencial;
     }
 
-    public function getTelefone_celular() {
-        return $this->telefone_celular;
+    public function gettelefoneCelular() {
+        return $this->telefoneCelular;
     }
 
     public function getEmail() {
