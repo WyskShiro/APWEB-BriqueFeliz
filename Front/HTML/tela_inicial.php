@@ -34,21 +34,33 @@
                         <!--
                         FORMULÁRIO PARA LOGAR
                             -->
-                        <form class="form-inline" method="post">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Entrar</h5>
+                                <form class="form-inline" method="post">
                             <input type="hidden" name="funcao" value="realizarLogin">
 
-                            <div class="form-group">
-                                <label for="numeroId"><span class="glyphicon glyphicon-user"></span></label>
-                                <input id="numeroId" name="numeroId" class="form-control" type="text" placeholder="Número de Identificação">
-                            </div>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">@</div>
+                                    </div>
+                                    <label for="numeroId"><span class="glyphicon glyphicon-user"></span></label>
+                                    <input type="text" class="form-control" name="numeroId" id="numeroId" placeholder="Número de Identificação">
+                                </div>
 
-                            <div class="form-group">
-                                <label for="cpf"><span class="glyphicon glyphicon-lock"></span></label>
-                                <input id="cpf" name="cpf" class="form-control" type="text" placeholder="CPF">
-                            </div>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">@</div>
+                                    </div>
+                                    <label for="cpf"><span class="glyphicon glyphicon-lock"></span></label>
+                                    <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF">
+                                </div>
 
-                            <input type="submit" value="Entrar">
+                            <input type="submit" class="btn btn-primary btn-block" value="Entrar">
                         </form>
+                    </div>
+                </div>
+
                         <!----------------------------->
                     </div>
                 </div>
@@ -56,7 +68,7 @@
 
             <div class="col">
                 <div class="col-sm-6">
-                   <img src="Recursos/exemplo.jpeg" alt="IMAGEM DO BRINQUE FELIZ">
+                   <img src="Recursos/child_playing.jpg" class="img-fluid" alt="IMAGEM DO BRINQUE FELIZ">
                 </div>
             </div>
         </div>
