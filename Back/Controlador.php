@@ -25,6 +25,9 @@ class Controlador {
             case 'realizarLogin':
                 $this->realizarLogin();
                 break;
+            case 'gerenciar_funcionario':
+                $this->gerenciarFuncionario();
+                break;
             default:
                 $this->home();
                 break;
@@ -42,6 +45,10 @@ class Controlador {
         } else {
             require 'Front/HTML/tela_inicial.php';
         }
+    }
+
+    public function gerenciarFuncionario() {
+        require 'Front/HTML/funcionario/gerenciar_funcionario.php';
     }
 
     public static function autenticarUsuario() {
