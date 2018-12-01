@@ -23,9 +23,10 @@ class Funcionario {
     private $telefoneCelular;
     private $email;
     private $dataContratacao;
+    private $nivelPermissao; // 1 -> usuário normal, 2 -> admin
 
 
-    public function __construct($id, $cpf, $nome, $endereco, $cidade, $estado, $telefoneResidencial, $telefoneCelular, $email, $dataContratacao) {
+    public function __construct($id, $cpf, $nome, $endereco, $cidade, $estado, $telefoneResidencial, $telefoneCelular, $email, $dataContratacao, $nivelPermissao) {
         $this->id = $id;
         $this->cpf = $cpf;
         $this->nome = $nome;
@@ -36,6 +37,7 @@ class Funcionario {
         $this->telefoneCelular = $telefoneCelular;
         $this->email = $email;
         $this->dataContratacao = $dataContratacao;
+        $this->nivelPermissao = $nivelPermissao;
     }
 
     public function getId() {
@@ -76,6 +78,11 @@ class Funcionario {
 
     public function getDataContratacao() {
         return $this->dataContratacao;
+    }
+
+    public function getNivelPermissao() {
+
+        return $this->nivelPermissao;
     }
 
 

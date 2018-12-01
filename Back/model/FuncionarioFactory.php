@@ -48,8 +48,9 @@ class FuncionarioFactory extends AbstractFactory {
 
         //var_dump($Funcionario);
         try {
-            $sql = "INSERT INTO  funcionario(cpf, nome, endereco,cidade,estado,telefone_residencial,telefone_celular,email,data_contratacao)" .
-                    "VALUES ( '" . $Funcionario->getCpf() . "', '"
+            $sql = "INSERT INTO  funcionario(cpf, nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, 
+            data_contratacao, nivel_permissao) " .
+                    " VALUES ( '" . $Funcionario->getCpf() . "', '"
                     . $Funcionario->getNome() . "', '"
                     . $Funcionario->getEndereco() . "', '"
                     . $Funcionario->getCidade() . "', '"
@@ -57,7 +58,8 @@ class FuncionarioFactory extends AbstractFactory {
                     . $Funcionario->getTelefoneResidencial() . "', '"
                     . $Funcionario->getTelefoneCelular() . "', '"
                     . $Funcionario->getEmail() . "', '"
-                    . $Funcionario->getDataContratacao(). "')";
+                    . $Funcionario->getDataContratacao() . "', '"
+                    . $Funcionario->getNivelPermissao(). "')";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {

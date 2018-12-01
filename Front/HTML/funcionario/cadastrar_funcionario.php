@@ -36,6 +36,30 @@
         ----- TODO se tiver dados de funcionário vindo do servidor -> carregá-los nos elementos
     -->
     <div class="container">
+        <?php
+        if (isset($resultado)) {
+            if ($resultado) {
+        ?>
+
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span>Funfou</span>
+        </div>
+
+        <?php
+        } else {
+        ?>
+
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span>Não Funfou</span>
+        </div>
+
+        <?php
+
+            }
+        }
+        ?>
         <form method="post">
             <input type="hidden" name="funcao" value="cadastrar_funcionario_banco" />
 

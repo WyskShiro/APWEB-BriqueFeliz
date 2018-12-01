@@ -91,7 +91,7 @@ class Controlador {
     public function cadastrarFuncionarioBanco() {
         //return $_POST["nomeFuncionario"];
         $funcionario = new Funcionario(
-        -1,
+        -1, // -1 pois como o ID é incremental, não é necessário a informação passada (mas só da pra ter um construtor, ai não da pra ter um sem isso)
         $_POST["nome"], 
         $_POST["cpf"],
         $_POST["endereco"],
@@ -100,17 +100,13 @@ class Controlador {
         $_POST["telefoneResidencial"],
         $_POST["telefoneCelular"],
         $_POST["email"],
-        $_POST["dataContratacao"]);
+        $_POST["dataContratacao"],
+        1 //1 pois todo usuário cadastrado deve ser normal/não admin (eu acho)
+    );
 
         //var_dump($funcionario);
 
         $resultado = $this->funcionarioFactory->salvar($funcionario);
-
-        if ($resultado) {
-            echo "Funfou";
-        } else {
-            echo "Nao deu certo";
-        }
 
         require 'Front/HTML/funcionario/cadastrar_funcionario.php';
     }
@@ -125,18 +121,16 @@ class Controlador {
     public function excluirFuncionario() {
         $listaFuncionarios = $this->funcionarioFactory->listar();
 
-        var_dump ($listaFuncionarios);
+        //var_dump ($listaFuncionarios);
 
         require 'Front/HTML/funcionario/excluir_funcionario.php';
     }
 
     public function excluirFuncionarioBanco() {
         $resultado = $this->funcionarioFactory->deletar($_POST["funcionario_id"]);
-        
         $listaFuncionarios = $this->funcionarioFactory->listar();
 
-        var_dump ($listaFuncionarios);
-
+        //var_dump ($listaFuncionarios);
         require 'Front/HTML/funcionario/excluir_funcionario.php';
     }
 
