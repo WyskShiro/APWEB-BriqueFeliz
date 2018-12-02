@@ -87,9 +87,11 @@ class FuncionarioFactory extends AbstractFactory {
         return $result;
     }
 
-    public function alterar($obj1,$obj2,$email) {
+    public function inverterPermissao($id, $permissaoAtual) {
+        $permissaoAtual = $permissaoAtual == 1 ? 2 : 1;
+
         try {
-            $sql = "UPDATE Funcionario set nome ='" . $obj1 . "', email='" .$obj2 . "'where email='". $email."'";
+            $sql = "UPDATE Funcionario set nivel_permissao = '" . $permissaoAtual .  "'where funcionario_id = '". $id."'";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {

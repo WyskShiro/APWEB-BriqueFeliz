@@ -21,25 +21,52 @@
     <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php'?>
 
     <div class="container">
-        <h3>Excluir Funcionário</h3>
+        <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
+
+
+        <h3>Alterar Permissão Funcionário</h3>
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Nome do Funcionário</th>
-                    <th>Permissão atual</th>
-                    <th>Trocar permissão ?</th>
+                    <th>Alterar permissão ?</th>
                 </tr>
             </thead>
             <!--
                 ++++++ TODO: Para cada funcionário, ....
             -->
+            <?php
+                foreach($listaFuncionarios as $funcionario) {
+
+                
+            ?>
             <tbody>
                 <tr>
-                    <td>Func X</td>
-                    <td>Func X-> Permissão</td>
-                    <td><a href="?funcao=alterar_permissao&id=ALGUM ID" class="btn btn-danger">Alterar para
-                            INVERSO_DO_ATUAL</a></td>
+                    <td>
+                        <?php echo $funcionario->getNome() ?>
+                    </td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="funcao" value="alterar_permissao_banco">
+                            <input type="hidden" name="funcionario_id" value="<?php echo $funcionario->getId()?>">
+                            <input type="hidden" name="funcionario_nivel_permissao" value="<?php echo $funcionario->getNivelPermissao()?>">
+                            <?php
+                                $permissaoNova = "";
+                                if ($funcionario->getNivelPermissao() == 1) {
+                                    $permissaoNova = "Administrador";
+                                } else {
+                                    $permissaoNova = "Funcionário Comum";
+                                }
+                            ?>
+                            <input class="btn btn-danger" type="submit" value="<?php echo $permissaoNova ?>">
+                        </form>
+                    </td>
                 </tr>
+
+
+                <?php
+                    }
+                ?>
             </tbody>
         </table>
     </div>
