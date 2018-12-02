@@ -22,22 +22,22 @@ CREATE TABLE 'fornecedor' (
   'email' TEXT NOT NULL
 ) ;
 
-CREATE TABLE 'funcionario' (
-  'funcionario_id' INTEGER PRIMARY KEY,
-  'cpf' INTEGER NOT NULL,
-  'nome' TEXT  NOT NULL,
-  'endereco' TEXT NOT NULL,
-  'cidade' TEXT  NOT NULL,
-  'estado' TEXT  NOT NULL,
-  'telefone_residencial' TEXT NOT NULL,
-  'telefone_celular' TEXT  NOT NULL,
-  'email' TEXT  NOT NULL,
-  'data_contratacao' date NOT NULL
-) ;
+CREATE TABLE IF NOT EXISTS "funcionario" (
+  "funcionario_id" integer PRIMARY KEY AUTOINCREMENT,
+  "cpf" integer NOT NULL,
+  "nome" text NOT NULL,
+  "endereco" text NOT NULL,
+  "cidade" text NOT NULL,
+  "estado" text NOT NULL,
+  "telefone_residencial" text NOT NULL,
+  "telefone_celular" text NOT NULL,
+  "email" text NOT NULL,
+  "data_contratacao" date NOT NULL,
+  "nivel_permissao" integer
+);
 
 CREATE TABLE 'produto' (
   'produto_id' INTEGER PRIMARY KEY,
-  'codigo_de_barras' INTEGER NOT NULL,
   'nome' TEXT  NOT NULL,
   'descricao' text
 );
@@ -65,6 +65,7 @@ CREATE TABLE 'produto_venda' (
 
 CREATE TABLE 'produto_estoque' (
   'produto_estoque_id' INTEGER PRIMARY KEY,
+  'codigo_de_barras' INTEGER NOT NULL,
   'preco_compra' float NOT NULL ,
   'preco_venda' float NOT NULL,
   'quantidade' INTEGER NOT NULL,

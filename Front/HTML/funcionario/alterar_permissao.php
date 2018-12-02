@@ -18,39 +18,42 @@
 </head>
 
 <body>
-    <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php'?>
 
-    <div class="container">
-        <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
+    <div class="container-fluid">
+        <div class="row content">
+            <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php'?>
+
+            <div class="col-sm-9">
+                <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
 
 
-        <h3>Alterar Permissão Funcionário</h3>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Nome do Funcionário</th>
-                    <th>Alterar permissão ?</th>
-                </tr>
-            </thead>
-            <!--
+                <h3>Alterar Permissão Funcionário</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nome do Funcionário</th>
+                            <th>Alterar permissão ?</th>
+                        </tr>
+                    </thead>
+                    <!--
                 ++++++ TODO: Para cada funcionário, ....
             -->
-            <?php
+                    <?php
                 foreach($listaFuncionarios as $funcionario) {
 
                 
             ?>
-            <tbody>
-                <tr>
-                    <td>
-                        <?php echo $funcionario->getNome() ?>
-                    </td>
-                    <td>
-                        <form method="post">
-                            <input type="hidden" name="funcao" value="alterar_permissao_banco">
-                            <input type="hidden" name="funcionario_id" value="<?php echo $funcionario->getId()?>">
-                            <input type="hidden" name="funcionario_nivel_permissao" value="<?php echo $funcionario->getNivelPermissao()?>">
-                            <?php
+                    <tbody>
+                        <tr>
+                            <td>
+                                <?php echo $funcionario->getNome() ?>
+                            </td>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="funcao" value="alterar_permissao_banco">
+                                    <input type="hidden" name="funcionario_id" value="<?php echo $funcionario->getId()?>">
+                                    <input type="hidden" name="funcionario_nivel_permissao" value="<?php echo $funcionario->getNivelPermissao()?>">
+                                    <?php
                                 $permissaoNova = "";
                                 if ($funcionario->getNivelPermissao() == 1) {
                                     $permissaoNova = "Administrador";
@@ -58,17 +61,19 @@
                                     $permissaoNova = "Funcionário Comum";
                                 }
                             ?>
-                            <input class="btn btn-danger" type="submit" value="<?php echo $permissaoNova ?>">
-                        </form>
-                    </td>
-                </tr>
+                                    <input class="btn btn-danger" type="submit" value="<?php echo $permissaoNova ?>">
+                                </form>
+                            </td>
+                        </tr>
 
 
-                <?php
+                        <?php
                     }
                 ?>
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
 

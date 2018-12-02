@@ -18,48 +18,52 @@
 </head>
 
 <body>
-    <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php'?>
+    <div class="container-fluid">
+        <div class="row content">
+            <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
 
-    <div class="container">
-        <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
+            <div class="col-sm-9">
+                <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
 
 
-        <h3>Excluir Funcionário</h3>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Nome do Funcionário</th>
-                    <th>Deletar ?</th>
-                </tr>
-            </thead>
-            <!--
+                <h3>Excluir Funcionário</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nome do Funcionário</th>
+                            <th>Deletar ?</th>
+                        </tr>
+                    </thead>
+                    <!--
                 ++++++ TODO: Para cada funcionário, ....
             -->
-            <?php
+                    <?php
                 foreach($listaFuncionarios as $funcionario) {
 
                 
             ?>
-            <tbody>
-                <tr>
-                    <td>
-                        <?php echo $funcionario->getNome() ?>
-                    </td>
-                    <td>
-                        <form method="post">
-                            <input type="hidden" name="funcao" value="excluir_funcionario_banco">
-                            <input type="hidden" name="funcionario_id" value="<?php echo $funcionario->getId()?>">
-                            <input class="btn btn-danger" type="submit" value="Deletar">
-                        </form>
-                    </td>
-                </tr>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <?php echo $funcionario->getNome() ?>
+                            </td>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="funcao" value="excluir_funcionario_banco">
+                                    <input type="hidden" name="funcionario_id" value="<?php echo $funcionario->getId()?>">
+                                    <input class="btn btn-danger" type="submit" value="Deletar">
+                                </form>
+                            </td>
+                        </tr>
 
 
-                <?php
+                        <?php
                     }
                 ?>
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
 

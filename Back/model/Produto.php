@@ -13,17 +13,18 @@
  */
 class Produto {
 
-    private $codigo_de_barras;
+    private $produto_id;
     private $nome;
     private $descricao;
 
-    public function Produto($nome, $quantidade_em_estoque) {
+    public function Produto($produto_id, $nome, $descricao) {
+        $this->produto_id = $produto_id;
         $this->nome = $nome;
-        $this->quantidade_em_estoque = $quantidade_em_estoque;
+        $this->descricao = $descricao;
     }
 
-    public function getCodigo_de_barras() {
-        return $this->codigo_de_barras;
+    public function getProdutoId() {
+        return $this->produto_id;
     }
 
     public function getNome() {

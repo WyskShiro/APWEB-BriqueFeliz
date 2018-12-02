@@ -1,10 +1,13 @@
 <?php
 require_once("Back/model/FuncionarioFactory.php");
 require_once("Back/model/Funcionario.php");
+require_once("Back/model/Produto.php");
+require_once("Back/model/ProdutoFactory.php");
 
 
 class Controlador {
     private $funcionarioFactory;
+    private $produtoFactory;
 
     public function __construct() {
         ini_set('error_reporting', E_ALL);
@@ -14,6 +17,8 @@ class Controlador {
     public function init() {
 
         $this->funcionarioFactory = new FuncionarioFactory();
+        $this->produtoFactory = new ProdutoFactory();
+
         $f = "";
 
         if (isset($_GET['funcao'])) {
@@ -34,6 +39,11 @@ class Controlador {
             case 'realizarLogin':
                 $this->realizarLogin();
                 break;
+
+            /**
+             * Funcionário
+             *  */   
+
             case 'gerenciar_funcionario':
                 $this->gerenciarFuncionario();
                 break;
@@ -57,6 +67,17 @@ class Controlador {
                 break;
             case 'alterar_permissao_banco':
                 $this->alterarPermissaoBanco();
+                break;
+            
+            /**
+             * Produto
+             */
+
+            case 'cadastrar_produto':
+                $this->cadastrarProduto();
+                break;
+            case 'cadastrar_produto_banco':
+                $this->cadastrarProdutoBanco();
                 break;
             default:
                 $this->home();
@@ -165,6 +186,23 @@ class Controlador {
      /**
      * Produto
      */
+
+    public function cadastrarProduto() {
+        require 'Front/HTML/produto/cadastrar_produto.php';
+    }
+
+    public function cadastrarProdutoBanco() {
+        $produto = new Produto(
+            -1, // -1 pois como o ID é incremental, não é necessário a informação passada (mas só da pra ter um construtor, ai não da pra ter um sem isso)
+            $_POST["nome"], 
+            $_POST["descricao"]
+        );
+        
+        $resultado = $this->produtoFactory->salvar($produto);
+        
+        require 'Front/HTML/produto/cadastrar_produto.php';
+    }
+    
 
      /**
      * Venda

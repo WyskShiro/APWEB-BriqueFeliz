@@ -18,8 +18,8 @@
 </head>
 
 <body>
-    <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php'?>
 
+    <!--
     <div class="container">
         <h3>Adicionar Funcionário</h3>
         <ul class="nav justify-content-end">
@@ -31,88 +31,72 @@
             </li>
         </ul>
     </div>
-
+-->
     <!--
         ----- TODO se tiver dados de funcionário vindo do servidor -> carregá-los nos elementos
     -->
-    <div class="container">
-        <?php
-        if (isset($resultado)) {
-            if ($resultado) {
-        ?>
+    <div class="container-fluid">
+        <div class="row content">
+            <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
 
-        <div class="alert alert-success">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <span>Funfou</span>
-        </div>
+            <div class="col-sm-9">
+                <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
 
-        <?php
-        } else {
-        ?>
+                <form method="post">
+                    <input type="hidden" name="funcao" value="cadastrar_funcionario_banco" />
 
-        <div class="alert alert-danger">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <span>Não Funfou</span>
-        </div>
-
-        <?php
-
-            }
-        }
-        ?>
-        <form method="post">
-            <input type="hidden" name="funcao" value="cadastrar_funcionario_banco" />
-
-            <?php
+                    <?php
             /**
              * SE TIVER VINDO DADOS -> SETAR UMA VARIAVEL DE CONTROLE DE ALTERAR COMO TRUE
              * **** UTILIZAR PARA DIFERENCIAR ALTERAR DE ADICIONAR
              */
             ?>
 
-            <div class="form-group">
-                <label for="nomeFuncionario">Nome:</label>
-                <input type="text" class="form-control" id="nomeFuncionario" name="nome" aria-describedby="emailHelp"
-                    placeholder="Nome">
-            </div>
-            <div class="form-group">
-                <label for="cpfFuncionario">CPF</label>
-                <input type="text" class="form-control" id="cpfFuncionario" name="cpf" placeholder="xxx.xxx.xxx-xx">
-            </div>
-            <div class="form-group">
-                <label for="enderecoFuncionario">Endereço</label>
-                <input type="text" class="form-control" id="enderecoFuncionario" name="endereco" placeholder="Endereço">
-            </div>
-            <div class="form-group">
-                <label for="cidadeFuncionario">Cidade</label>
-                <input type="text" class="form-control" id="cidadeFuncionario" name="cidade" placeholder="Cidade">
-            </div>
-            <div class="form-group">
-                <label for="estadoFuncionario">Estado</label>
-                <input type="text" class="form-control" id="estadoFuncionario" name="estado" placeholder="Estado">
-            </div>
-            <div class="form-group">
-                <label for="telefoneResidencialFuncionario">Telefone Residencial</label>
-                <input type="text" class="form-control" id="telefoneResidencialFuncionario" name="telefoneResidencial"
-                    placeholder="(xx) xxxx - xxxx">
-            </div>
-            <div class="form-group">
-                <label for="telefoneCelularFuncionario">Telefone Celular</label>
-                <input type="text" class="form-control" id="telefoneCelularFuncionario" name="telefoneCelular"
-                    placeholder="(xx) xxxxx-xxxx">
-            </div>
-            <div class="form-group">
-                <label for="emailFuncionario">Email</label>
-                <input type="email" class="form-control" id="emailFuncionario" name="email" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <label for="dataContratacaoFuncionario">Data de contratação</label>
-                <input type="date" class="form-control" id="dataContratacaoFuncionario" name="dataContratacao"
-                    placeholder="">
-            </div>
+                    <div class="form-group">
+                        <label for="nomeFuncionario">Nome:</label>
+                        <input type="text" class="form-control" id="nomeFuncionario" name="nome" aria-describedby="emailHelp"
+                            placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="cpfFuncionario">CPF</label>
+                        <input type="text" class="form-control" id="cpfFuncionario" name="cpf" placeholder="xxx.xxx.xxx-xx">
+                    </div>
+                    <div class="form-group">
+                        <label for="enderecoFuncionario">Endereço</label>
+                        <input type="text" class="form-control" id="enderecoFuncionario" name="endereco" placeholder="Endereço">
+                    </div>
+                    <div class="form-group">
+                        <label for="cidadeFuncionario">Cidade</label>
+                        <input type="text" class="form-control" id="cidadeFuncionario" name="cidade" placeholder="Cidade">
+                    </div>
+                    <div class="form-group">
+                        <label for="estadoFuncionario">Estado</label>
+                        <input type="text" class="form-control" id="estadoFuncionario" name="estado" placeholder="Estado">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefoneResidencialFuncionario">Telefone Residencial</label>
+                        <input type="text" class="form-control" id="telefoneResidencialFuncionario" name="telefoneResidencial"
+                            placeholder="(xx) xxxx - xxxx">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefoneCelularFuncionario">Telefone Celular</label>
+                        <input type="text" class="form-control" id="telefoneCelularFuncionario" name="telefoneCelular"
+                            placeholder="(xx) xxxxx-xxxx">
+                    </div>
+                    <div class="form-group">
+                        <label for="emailFuncionario">Email</label>
+                        <input type="email" class="form-control" id="emailFuncionario" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="dataContratacaoFuncionario">Data de contratação</label>
+                        <input type="date" class="form-control" id="dataContratacaoFuncionario" name="dataContratacao"
+                            placeholder="">
+                    </div>
 
-            <input type="submit" value='Enviar' class="btn btn-primary" />
-        </form>
+                    <input type="submit" value='Enviar' class="btn btn-primary" />
+                </form>
+            </div>
+        </div>
     </div>
 
 
