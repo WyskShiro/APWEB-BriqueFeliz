@@ -13,11 +13,11 @@
  */
 class Produto_estoque {
 
-    private preco_compra;
-    private preco_venda;
-    private quantitade;
-    private fornecedor_id;
-    private produto_id;
+    private $preco_compra;
+    private $preco_venda;
+    private $quantitade;
+    private $fornecedor_id;
+    private $produto_id;
 
 
     public function Produto_estoque($preco_venda, $quantitade) {

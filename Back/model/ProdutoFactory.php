@@ -61,9 +61,9 @@ class ProdutoFactory extends AbstractFactory {
         return $result;
     }
 
-    public function deletar($param) {
+    public function deletar($idProduto) {
         try {
-            $sql = "DELETE FROM Produto where email= '" . $param . "'";
+            $sql = "DELETE FROM Produto where produto_id = '" . $idProduto . "'";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
