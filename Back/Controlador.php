@@ -55,6 +55,9 @@ class Controlador {
             case 'alterar_permissao':
                 $this->alterarPermissao();
                 break;
+            case 'alterar_permissao_banco':
+                $this->alterarPermissaoBanco();
+                break;
             default:
                 $this->home();
                 break;
@@ -137,9 +140,19 @@ class Controlador {
     
 
     public function alterarPermissao() {
+        $listaFuncionarios = $this->funcionarioFactory->listar();
+
         require 'Front/HTML/funcionario/alterar_permissao.php';
     }
 
+    public function alterarPermissaoBanco() {
+        $resultado = $this->funcionarioFactory->inverterPermissao($_POST["funcionario_id"], $_POST["funcionario_nivel_permissao"]);
+        $listaFuncionarios = $this->funcionarioFactory->listar();
+
+        require 'Front/HTML/funcionario/alterar_permissao.php';
+    }
+
+    
 
     /**
      * Cliente
