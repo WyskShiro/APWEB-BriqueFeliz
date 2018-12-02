@@ -46,9 +46,16 @@ class FornecedorFactory extends AbstractFactory {
     public function salvar($obj) {
         $Fornecedor = $obj;
         try {
-            $sql = "INSERT INTO  Fornecedor(nome,email)" .
-                    "VALUES ( '" . $Fornecedor->getNome() . "', '"
-                    . $Fornecedor->getEmail() . "')";
+            $sql = "INSERT INTO  Fornecedor(cnpj, nome_fantasia, razao_social, endereco, cidade, estado, telefone, email)" .
+                    "VALUES ( '" . 
+                    $Fornecedor->getCnpj() . "', '" . 
+                    $Fornecedor->getNome_fantasia() . "', '" . 
+                    $Fornecedor->getRazao_social() . "', '" . 
+                    $Fornecedor->getEndereco() . "', '" . 
+                    $Fornecedor->getCidade() . "', '" . 
+                    $Fornecedor->getEstado() . "', '" . 
+                    $Fornecedor->getTelefone() . "', '" . 
+                    $Fornecedor->getEmail() . "')";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
@@ -61,9 +68,9 @@ class FornecedorFactory extends AbstractFactory {
         return $result;
     }
 
-    public function deletar($param) {
+    public function deletar($fornecedor_id) {
         try {
-            $sql = "DELETE FROM Fornecedor where email= '" . $param . "'";
+            $sql = "DELETE FROM Fornecedor where fornecedor_id= '" . $fornecedor_id . "'";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {

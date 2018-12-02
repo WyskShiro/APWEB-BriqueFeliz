@@ -3,11 +3,13 @@ require_once("Back/model/FuncionarioFactory.php");
 require_once("Back/model/Funcionario.php");
 require_once("Back/model/Produto.php");
 require_once("Back/model/ProdutoFactory.php");
-
+require_once("Back/model/Fornecedor.php");
+require_once("Back/model/FornecedorFactory.php");
 
 class Controlador {
     private $funcionarioFactory;
     private $produtoFactory;
+    private $fornecedorFactory;
 
     public function __construct() {
         ini_set('error_reporting', E_ALL);
@@ -18,6 +20,7 @@ class Controlador {
 
         $this->funcionarioFactory = new FuncionarioFactory();
         $this->produtoFactory = new ProdutoFactory();
+        $this->fornecedorFactory = new FornecedorFactory();
 
         $f = "";
 
@@ -79,8 +82,31 @@ class Controlador {
             case 'cadastrar_produto_banco':
                 $this->cadastrarProdutoBanco();
                 break;
+            case 'excluir_produto':
+                $this->excluirProduto();
+                break;
+            case 'excluir_produto_banco':
+                $this->excluirProdutoBanco();
+                break;
             default:
                 $this->home();
+                break;
+            
+
+            /**
+             * Fornecedor
+             */
+            case 'cadastrar_fornecedor':
+                $this->cadastrarFornecedor();
+                break;
+            case 'cadastrar_fornecedor_banco':
+                $this->cadastrarFornecedorBanco();
+                break;
+            case 'excluir_fornecedor':
+                $this->excluirFornecedor();
+                break;
+            case 'excluir_fornecedor_banco':
+                $this->excluirFornecedorBanco();
                 break;
 
         }
@@ -202,11 +228,69 @@ class Controlador {
         
         require 'Front/HTML/produto/cadastrar_produto.php';
     }
+
+    public function excluirProduto() {
+        $listaProdutos = $this->produtoFactory->listar();
+
+        //var_dump ($listaFuncionarios);
+
+        require 'Front/HTML/produto/excluir_produto.php';
+    }
+
+    public function excluirProdutoBanco() {
+        $resultado = $this->produtoFactory->deletar($_POST["produto_id"]);
+        $listaProdutos = $this->produtoFactory->listar();
+
+        //var_dump ($listaFuncionarios);
+        require 'Front/HTML/produto/excluir_produto.php';
+    }
     
 
      /**
      * Venda
      */
+
+     /**
+      * Fornecedor
+      */
+
+    public function cadastrarFornecedor() {
+        require 'Front/HTML/fornecedor/cadastrar_fornecedor.php';
+    }
+
+    public function cadastrarFornecedorBanco() {
+        $fornecedor = new Fornecedor(
+            -1, // -1 pois como o ID é incremental, não é necessário a informação passada (mas só da pra ter um construtor, ai não da pra ter um sem isso)
+            $_POST["cnpj"], 
+            $_POST["nomeFantasia"], 
+            $_POST["razaoSocial"], 
+            $_POST["endereco"], 
+            $_POST["cidade"], 
+            $_POST["estado"], 
+            $_POST["telefone"], 
+            $_POST["email"]
+        );
+
+        $resultado = $this->fornecedorFactory->salvar($fornecedor);
+        
+        require 'Front/HTML/fornecedor/cadastrar_fornecedor.php';
+    }
+
+    public function excluirFornecedor() {
+        $listaFornecedores = $this->fornecedorFactory->listar();
+
+        //var_dump ($listaFuncionarios);
+
+        require 'Front/HTML/fornecedor/excluir_fornecedor.php';
+    }
+
+    public function excluirFornecedorBanco() {
+        $resultado = $this->fornecedorFactory->deletar($_POST["fornecedor_id"]);
+        $listaFornecedores = $this->fornecedorFactory->listar();
+
+        //var_dump ($listaFuncionarios);
+        require 'Front/HTML/fornecedor/excluir_fornecedor.php';
+    }
 
     /**
      * Outros

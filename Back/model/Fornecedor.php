@@ -13,6 +13,7 @@
  */
 class Fornecedor {
 
+    private $fornecedor_id;
     private $cnpj;
     private $nome_fantasia;
     private $razao_social;
@@ -22,9 +23,20 @@ class Fornecedor {
     private $telefone;
     private $email;
 
-    public function Fornecedor($nome, $email) {
-        $this->nome = $nome;
+    public function Fornecedor($fornecedor_id, $cnpj, $nome_fantasia, $razao_social, $endereco, $cidade, $estado, $telefone, $email) {
+        $this->fornecedor_id = $fornecedor_id;
+        $this->cnpj = $cnpj;
+        $this->nome_fantasia = $nome_fantasia;
+        $this->razao_social = $razao_social;
+        $this->endereco = $endereco;
+        $this->cidade = $cidade;
+        $this->estado = $estado;
+        $this->telefone = $telefone;
         $this->email = $email;
+    }
+
+    public function getFornecedorId() {
+        return $this->fornecedor_id;
     }
 
     public function getCnpj() {
