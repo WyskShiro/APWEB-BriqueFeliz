@@ -1,5 +1,11 @@
-<?$listaCategoria = $this->categoriaFactory->listar();?>
-
+<?php
+/**
+ * Created by PhpStorm.
+ * User: muril
+ * Date: 03/12/18
+ * Time: 16:17
+ */
+?>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -23,55 +29,40 @@
 
     <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
 
+
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Adicionar produto</h1>
+            <h1 class="h2">Adicionar categoria</h1>
 
             <div class="btn-toolbar mb-2 mb-md-0">
-
-                <button type="button" class="btn btn-outline-danger">Cancelar</button>
-                <button type="button" class="btn btn-outline-success">Salvar</button>
+                    <button type="button" class="btn btn-outline-danger">Cancelar</button>
+                    <button type="button" class="btn btn-outline-success">Salvar</button>
             </div>
-
         </div>
 
         <div class="col-sm-9">
             <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
 
-            <form method="POST">
-                <input type="hidden" name="funcao" value="cadastrar_produto_banco" />
+
+            <form method="post">
+                <input type="hidden" name="funcao" value="cadastrar_categoria_banco" />
 
 
                 <div class="form-group">
                     <label for="nome">Nome:</label>
                     <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
                 </div>
-
-                <div class="form-group">
-                    <label for="codigoDeBarrasProduto">Código de barras</label>
-                    <input type="number" class="form-control" id="codigoDeBarras" name="codigoDeBarras" placeholder="Código">
-                </div>
-
-                <div class="form-group">
-                    <label for="categoriaProduto">Categoria:</label>
-                    <select class="form-control" name="categoriaProduto" id="categoriaProduto">
-                        <? foreach($listaCategoria as $categoria) { ?>
-                            <option value="<?=$categoria->getCategoriaId();?>"><?=$categoria->getNome();?></option>
-                        <?}?>
-                    </select>
-                </div>
-
                 <div class="form-group">
                     <label for="descricao">Descrição</label>
                     <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
                 </div>
-                <button type="submit" value='cadastrarProduto' class="btn btn-primary">Enviar</button>
+
+                <button type="submit" value='cadastrar' class="btn btn-primary">Enviar</button>
             </form>
         </div>
     </main>
 
     </div>
-
     </div>
 
 

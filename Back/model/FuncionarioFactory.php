@@ -30,6 +30,19 @@ class FuncionarioFactory extends AbstractFactory {
         return $resultO;
     }
 
+    public function autenticar($funcionario_id, $cpf) {
+        $sql = "SELECT * FROM funcionario where funcionario_id = '" . $funcionario_id . "' and cpf ='". $cpf ."'";
+        try {
+            $result = $this->db->query($sql);
+
+            $resultO = $this->queryRowsToListOfObjects($result, "Funcionario");
+        } catch (Exception $exc) {
+            echo $exc->getMessage();
+            $resultO = null;
+        }
+        return $resultO;
+    }
+
     public function listar() {
         $sql = "SELECT * FROM funcionario";
         try {

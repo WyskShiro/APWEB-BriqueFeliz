@@ -1,6 +1,12 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: muril
+ * Date: 03/12/18
+ * Time: 16:08
+ */
 
-require_once("Produto.php");
+require_once("Cliente.php");
 require_once("AbstractFactory.php");
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -9,20 +15,20 @@ require_once("AbstractFactory.php");
  */
 
 /**
- * Description of ProdutoFactory
+ * Description of ClienteFactory
  *
  * @author Murilo Rei Delas
  */
-class ProdutoFactory extends AbstractFactory {
+class CategoriaFactory extends AbstractFactory {
 
     //put your code here
 
     public function buscar($param) {
-        $sql = "SELECT * FROM Produto where email = '" . $param . "'";
+        $sql = "SELECT * FROM categoria where categoria_id = '" . $param . "'";
         try {
             $result = $this->db->query($sql);
 
-            $resultO = $this->queryRowsToListOfObjects($result, "Produto");
+            $resultO = $this->queryRowsToListOfObjects($result, "Categoria");
         } catch (Exception $exc) {
             echo $exc->getMessage();
             $resultO = null;
@@ -31,11 +37,11 @@ class ProdutoFactory extends AbstractFactory {
     }
 
     public function listar() {
-        $sql = "SELECT * FROM Produto";
+        $sql = "SELECT * FROM categoria";
         try {
             $result = $this->db->query($sql);
 
-            $resultO = $this->queryRowsToListOfObjects($result, "Produto");
+            $resultO = $this->queryRowsToListOfObjects($result, "Categoria");
         } catch (Exception $exc) {
             echo $exc->getMessage();
             $resultO = null;
@@ -44,14 +50,11 @@ class ProdutoFactory extends AbstractFactory {
     }
 
     public function salvar($obj) {
-        $Produto = $obj;
+        $Categoria = $obj;
         try {
-            $sql = "INSERT INTO  Produto(nome, codigo_de_barras, descricao, categoria_id)" .
-                    "VALUES ( '" . 
-                    $Produto->getNome() . "', '" . 
-                    $Produto->getCodigoDeBarras() . "', '" . 
-                    $Produto->getDescricao() . "', '" .
-                    $Produto->getCategoriaId() ."')";
+            $sql = "INSERT INTO  categoria(nome,descricao)" .
+                "VALUES ( '" . $Categoria->getNome() . "', '"
+                . $Categoria->getDescricao() . "')";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
@@ -64,9 +67,9 @@ class ProdutoFactory extends AbstractFactory {
         return $result;
     }
 
-    public function deletar($idProduto) {
+    public function deletar($param) {
         try {
-            $sql = "DELETE FROM Produto where produto_id = '" . $idProduto . "'";
+            $sql = "DELETE FROM categoria where categoria_id = '" . $param . "'";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
@@ -79,9 +82,9 @@ class ProdutoFactory extends AbstractFactory {
         return $result;
     }
 
-    public function alterar($obj1,$obj2,$email) {
+    public function alterar($obj1,$obj2,$categoria_id) {
         try {
-            $sql = "UPDATE Produto set nome ='" . $obj1 . "', email='" .$obj2 . "'where email='". $email."'";
+            $sql = "UPDATE categoria set nome ='" . $obj1 . "', descricao ='" .$obj2 . "'where categoria_id ='". $categoria_id."'";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
@@ -95,3 +98,5 @@ class ProdutoFactory extends AbstractFactory {
     }
 
 }
+
+?>

@@ -17,12 +17,14 @@ class Produto {
     private $nome;
     private $codigoDeBarras;
     private $descricao;
+    private $categoria_id;
 
-    public function Produto($produto_id, $nome, $codigoDeBarras, $descricao) {
+    public function Produto($produto_id, $nome, $codigoDeBarras, $descricao, $categoria_id) {
         $this->produto_id = $produto_id;
         $this->nome = $nome;
         $this->codigoDeBarras = $codigoDeBarras;
         $this->descricao = $descricao;
+        $this->categoria_id = $categoria_id;
     }
 
     public function getProdutoId() {
@@ -39,6 +41,11 @@ class Produto {
 
     public function getDescricao() {
         return $this->descricao;
+    }
+
+    public function getCategoriaId()
+    {
+        return $this->categoria_id;
     }
 
 

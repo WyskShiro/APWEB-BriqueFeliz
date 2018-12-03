@@ -36,13 +36,20 @@ CREATE TABLE IF NOT EXISTS "funcionario" (
   "nivel_permissao" integer
 );
 
+CREATE TABLE 'categoria' (
+  'categoria_id' integer PRIMARY KEY AUTOINCREMENT,
+  'nome' TEXT NOT NULL,
+  'descricao' TEXT NOT NULL
+);
+
 CREATE TABLE 'produto' (
   'produto_id' INTEGER PRIMARY KEY,
   'nome' TEXT  NOT NULL,
   'codigo_de_barras' INTEGER NOT NULL,
-  'descricao' text
+  'descricao' text,
+  'categoria_id' INTEGER NOT NULL,
+  FOREIGN KEY('categoria_id') REFERENCES categoria('categoria_id')
 );
-
 
 CREATE TABLE 'venda' (
   'venda_id' INTEGER PRIMARY KEY,
