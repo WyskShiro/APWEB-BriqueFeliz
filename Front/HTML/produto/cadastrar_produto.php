@@ -18,22 +18,23 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row content">
+ 
             <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
+
+     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Adicionar produto</h1>
+
+             <div class="btn-toolbar mb-2 mb-md-0">
+                 
+                    <button type="button" class="btn btn-outline-danger">Cancelar</button>
+                    <button type="button" class="btn btn-outline-success">Salvar</button>
+            </div>
+            
+          </div>
 
             <div class="col-sm-9">
                 <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
-
-                <h3>Adicionar Produto</h3>
-                <ul class="nav justify-content-end">
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-outline-danger">Cancelar</button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-outline-success">Salvar</button>
-                    </li>
-                </ul>
 
                 <form method="post">
                     <input type="hidden" name="funcao" value="cadastrar_produto_banco" />
@@ -56,7 +57,7 @@
                     <button type="submit" value='cadastrarProduto' class="btn btn-primary">Enviar</button>
                 </form>
             </div>
-
+     </main>
 
         </div>
 

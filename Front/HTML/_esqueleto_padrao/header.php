@@ -2,7 +2,6 @@
 --------- Cabeçalho padrão nas páginas da aplicação 
 -->
 
-<div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Brinque Feliz</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
@@ -28,7 +27,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">Olá,XXXXX</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Realizar Venda</a>
+                    <a class="dropdown-item" href="#">Perfil</a>
                     <a class="dropdown-item" href="#">Outra ação</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Sair</a>
@@ -36,4 +35,3 @@
             </li>
         </div>
     </nav>
-</div>

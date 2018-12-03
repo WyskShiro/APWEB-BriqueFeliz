@@ -18,64 +18,67 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row content">
-            <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
 
-            <div class="col-sm-9">
-                <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
-                <ul class="nav justify-content-end">
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-outline-danger">Cancelar</button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-outline-success">Salvar</button>
-                    </li>
-                </ul>
-
-                <form method="post">
-                    <input type="hidden" name="funcao" value="cadastrar_fornecedor_banco" />
+    <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
 
 
-                    <div class="form-group">
-                        <label for="cnpj">CNPJ:</label>
-                        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ">
-                    </div>
-                    <div class="form-group">
-                        <label for="nomeFantasia">Nome Fantasia</label>
-                        <input type="text" class="form-control" id="nomeFantasia" name="nomeFantasia" placeholder="Nome Fantasia">
-                    </div>
-                    <div class="form-group">
-                        <label for="razaoSocial">Razão Social</label>
-                        <input type="text" class="form-control" id="razaoSocial" name="razaoSocial" placeholder="Razão Social">
-                    </div>
-                    <div class="form-group">
-                        <label for="Endereco">Endereco</label>
-                        <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereco">
-                    </div>
-                    <div class="form-group">
-                        <label for="cidade">Cidade</label>
-                        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade">
-                    </div>
-                    <div class="form-group">
-                        <label for="estado">Estado</label>
-                        <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado">
-                    </div>
-                    <div class="form-group">
-                        <label for="telefone">Telefone Fixo</label>
-                        <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(xx) xxxx - xxxx">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                    </div>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Adicionar fornecedor</h1>
 
-                    <button type="submit" value='cadastrar' class="btn btn-primary">Enviar</button>
-                </form>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                    <button type="button" class="btn btn-outline-danger">Cancelar</button>
+                    <button type="button" class="btn btn-outline-success">Salvar</button>
             </div>
-
-
         </div>
+
+        <div class="col-sm-9">
+            <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
+
+
+            <form method="post">
+                <input type="hidden" name="funcao" value="cadastrar_fornecedor_banco" />
+
+
+                <div class="form-group">
+                    <label for="cnpj">CNPJ:</label>
+                    <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ">
+                </div>
+                <div class="form-group">
+                    <label for="nomeFantasia">Nome Fantasia</label>
+                    <input type="text" class="form-control" id="nomeFantasia" name="nomeFantasia" placeholder="Nome Fantasia">
+                </div>
+                <div class="form-group">
+                    <label for="razaoSocial">Razão Social</label>
+                    <input type="text" class="form-control" id="razaoSocial" name="razaoSocial" placeholder="Razão Social">
+                </div>
+                <div class="form-group">
+                    <label for="Endereco">Endereco</label>
+                    <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereco">
+                </div>
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade">
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado">
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone Fixo</label>
+                    <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(xx) xxxx - xxxx">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                </div>
+
+                <button type="submit" value='cadastrar' class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </main>
+
+    </div>
     </div>
 
 
