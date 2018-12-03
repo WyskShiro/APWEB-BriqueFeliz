@@ -10,11 +10,13 @@
  */
 class Categoria
 {
+    private $categoria_id;
     private $nome;
     private $descricao;
 
-    public function Categoria($nome, $descricao)
+    public function Categoria($categoria_id,$nome, $descricao)
     {
+        $this->categoria_id = $categoria_id;
         $this->nome = $nome;
         $this->descricao = $descricao;
     }
@@ -27,6 +29,11 @@ class Categoria
     public function getDescricao()
     {
         return $this->descricao;
+    }
+
+    public function getCategoriaId()
+    {
+        return $this->categoria_id;
     }
 
 }

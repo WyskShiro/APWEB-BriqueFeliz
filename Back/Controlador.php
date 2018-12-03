@@ -11,12 +11,16 @@ require_once("Back/model/FornecedorFactory.php");
 require_once("Back/model/Produto_estoque.php");
 require_once("Back/model/Produto_estoqueFactory.php");
 
+require_once ("Back/model/Categoria.php");
+require_once ("Back/model/CategoriaFactory.php");
+
 
 class Controlador {
     private $funcionarioFactory;
     private $produtoFactory;
     private $fornecedorFactory;
     private $produtoEstoqueFactory;
+    private $categoriaFactory;
 
 
     public function __construct() {
@@ -30,6 +34,7 @@ class Controlador {
         $this->produtoFactory = new ProdutoFactory();
         $this->fornecedorFactory = new FornecedorFactory();
         $this->produtoEstoqueFactory = new Produto_estoqueFactory();
+        $this->categoriaFactory = new CategoriaFactory();
 
         $f = "";
 
@@ -97,9 +102,7 @@ class Controlador {
             case 'excluir_produto_banco':
                 $this->excluirProdutoBanco();
                 break;
-            default:
-                $this->home();
-                break;
+
             
 
             /**
@@ -133,6 +136,27 @@ class Controlador {
                 break;
             case 'excluir_estoque_banco':
                 $this->excluirEstoqueBanco();
+                break;
+
+            /**
+             * Categoria
+             */
+
+            case 'cadastrar_categoria':
+                $this->cadastrarCategoria();
+                break;
+            case 'cadastrar_categoria_banco':
+                $this->cadastrarCategoriaBanco();
+                break;
+            case 'excluir_categoria':
+                $this->excluirCategoria();
+                break;
+            case 'excluir_categoria_banco':
+                $this->excluirCategoriaBanco();
+                break;
+
+            default:
+                $this->home();
                 break;
         }
     }
@@ -363,6 +387,43 @@ class Controlador {
         //var_dump ($listaFuncionarios);
         require 'Front/HTML/estoque/excluir_estoque.php';
     }
+
+    /**
+     * Categoria
+     */
+
+    public function cadastrarCategoria() {
+        require 'Front/HTML/categoria/cadastrar_categoria.php';
+    }
+
+    public function cadastrarCategoriaBanco() {
+        $categoria = new Categoria(
+            -1, // -1 pois como o ID é incremental, não é necessário a informação passada (mas só da pra ter um construtor, ai não da pra ter um sem isso)
+            $_POST["nome"],
+            $_POST["descricao"]
+        );
+
+        $resultado = $this->categoriaFactory->salvar($categoria);
+
+        require 'Front/HTML/categoria/cadastrar_categoria.php';
+    }
+
+    public function excluirCategoria() {
+        $listaCategoria = $this->categoriaFactory->listar();
+
+        //var_dump ($listaFuncionarios);
+
+        require 'Front/HTML/categoria/excluir_categoria.php';
+    }
+
+    public function excluirCategoriaBanco() {
+        $resultado = $this->categoriaFactory->deletar($_POST["categoria_id"]);
+        $listaCategoria = $this->categoriaFactory->listar();
+
+        //var_dump ($listaFuncionarios);
+        require 'Front/HTML/categoria/excluir_categoria.php';
+    }
+
 
     /**
      * Outros

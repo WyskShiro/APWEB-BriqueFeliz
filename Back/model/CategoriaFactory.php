@@ -24,11 +24,11 @@ class CategoriaFactory extends AbstractFactory {
     //put your code here
 
     public function buscar($param) {
-        $sql = "SELECT * FROM Categoria where categoria_id = '" . $param . "'";
+        $sql = "SELECT * FROM categoria where categoria_id = '" . $param . "'";
         try {
             $result = $this->db->query($sql);
 
-            $resultO = $this->queryRowsToListOfObjects($result, "Cliente");
+            $resultO = $this->queryRowsToListOfObjects($result, "Categoria");
         } catch (Exception $exc) {
             echo $exc->getMessage();
             $resultO = null;
@@ -37,11 +37,11 @@ class CategoriaFactory extends AbstractFactory {
     }
 
     public function listar() {
-        $sql = "SELECT * FROM Categoria";
+        $sql = "SELECT * FROM categoria";
         try {
             $result = $this->db->query($sql);
 
-            $resultO = $this->queryRowsToListOfObjects($result, "Cliente");
+            $resultO = $this->queryRowsToListOfObjects($result, "Categoria");
         } catch (Exception $exc) {
             echo $exc->getMessage();
             $resultO = null;
@@ -52,7 +52,7 @@ class CategoriaFactory extends AbstractFactory {
     public function salvar($obj) {
         $Categoria = $obj;
         try {
-            $sql = "INSERT INTO  Categoria(nome,descricao)" .
+            $sql = "INSERT INTO  categoria(nome,descricao)" .
                 "VALUES ( '" . $Categoria->getNome() . "', '"
                 . $Categoria->getDescricao() . "')";
             if ($this->db->exec($sql)) {
@@ -69,7 +69,7 @@ class CategoriaFactory extends AbstractFactory {
 
     public function deletar($param) {
         try {
-            $sql = "DELETE FROM Categoria where categoria_id = '" . $param . "'";
+            $sql = "DELETE FROM categoria where categoria_id = '" . $param . "'";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
@@ -84,7 +84,7 @@ class CategoriaFactory extends AbstractFactory {
 
     public function alterar($obj1,$obj2,$categoria_id) {
         try {
-            $sql = "UPDATE Cliente set nome ='" . $obj1 . "', descricao='" .$obj2 . "'where categoria_id ='". $categoria_id."'";
+            $sql = "UPDATE categoria set nome ='" . $obj1 . "', descricao ='" .$obj2 . "'where categoria_id ='". $categoria_id."'";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {

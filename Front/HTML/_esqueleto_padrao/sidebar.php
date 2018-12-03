@@ -105,6 +105,23 @@
                         </li>
                     </div>
 
+                    <!-- Categorias -->
+                    <li class="nav-item" data-toggle="collapse" data-target="#collapseGerenciarCategoria"
+                        aria-expanded="false" aria-controls="collapseGerenciarCategoria">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file"></span>
+                            Gerenciar Categoria
+                        </a>
+                    </li>
+                    <div class="collapse" id="collapseGerenciarCategoria">
+                        <li class="nav-item">
+                            <a class="nav-link" href="?funcao=cadastrar_categoria">Adicionar Categoria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="?funcao=excluir_categoria">Excluir Categoria</a>
+                        </li>
+                    </div>
+
                     <!-- Relatorios -->
                     <li class="nav-item" data-toggle="collapse" data-target="#collapseGerenciarRelatorios"
                         aria-expanded="false" aria-controls="collapseGerenciarRelatorios">
