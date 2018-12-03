@@ -1,3 +1,5 @@
+<?$listaCategoria = $this->categoriaFactory->listar();?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -36,7 +38,7 @@
         <div class="col-sm-9">
             <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
 
-            <form method="post">
+            <form method="POST">
                 <input type="hidden" name="funcao" value="cadastrar_produto_banco" />
 
 
@@ -48,6 +50,15 @@
                 <div class="form-group">
                     <label for="codigoDeBarrasProduto">Código de barras</label>
                     <input type="number" class="form-control" id="codigoDeBarras" name="codigoDeBarras" placeholder="Código">
+                </div>
+
+                <div class="form-group">
+                    <label for="categoriaProduto">Categoria:</label>
+                    <select class="form-control" name="categoriaProduto" id="categoriaProduto">
+                        <? foreach($listaCategoria as $categoria) { ?>
+                            <option value="<?=$categoria->getCategoriaId();?>"><?=$categoria->getNome();?></option>
+                        <?}?>
+                    </select>
                 </div>
 
                 <div class="form-group">

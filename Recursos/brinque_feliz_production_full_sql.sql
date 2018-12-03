@@ -47,7 +47,7 @@ CREATE TABLE 'produto' (
   'nome' TEXT  NOT NULL,
   'codigo_de_barras' INTEGER NOT NULL,
   'descricao' text,
-  'categoria_id' INTEGER,
+  'categoria_id' INTEGER NOT NULL,
   FOREIGN KEY('categoria_id') REFERENCES categoria('categoria_id')
 );
 

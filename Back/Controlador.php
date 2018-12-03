@@ -267,15 +267,25 @@ class Controlador {
     }
 
     public function cadastrarProdutoBanco() {
-        $produto = new Produto(
-            -1, // -1 pois como o ID é incremental, não é necessário a informação passada (mas só da pra ter um construtor, ai não da pra ter um sem isso)
-            $_POST["nome"], 
-            $_POST["codigoDeBarras"], 
-            $_POST["descricao"]
-        );
-        
-        $resultado = $this->produtoFactory->salvar($produto);
-        
+        if ((isset($_POST["nome"]) && $_POST["nome"] !="") && (isset($_POST["categoriaProduto"]) && $_POST["categoriaProduto"] !=""))
+        {
+            $produto = new Produto(
+                -1, // -1 pois como o ID é incremental, não é necessário a informação passada (mas só da pra ter um construtor, ai não da pra ter um sem isso)
+                $_POST["nome"],
+                $_POST["codigoDeBarras"],
+                $_POST["descricao"],
+                $_POST["categoriaProduto"]
+            );
+
+            //todo validar se já existe um produto com o mesmo nome
+
+            $resultado = $this->produtoFactory->salvar($produto);
+        }
+        else
+        {
+            $resultado = false;
+        }
+
         require 'Front/HTML/produto/cadastrar_produto.php';
     }
 
