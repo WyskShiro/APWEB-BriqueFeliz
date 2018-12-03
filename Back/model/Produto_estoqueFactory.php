@@ -31,11 +31,14 @@ class Produto_estoqueFactory extends AbstractFactory {
     }
 
     public function listar() {
-        $sql = "SELECT * FROM Produto_estoque";
+        $sql = "SELECT * FROM Produto_estoque 
+        INNER JOIN fornecedor ON (produto_estoque.fornecedor_id = fornecedor.fornecedor_id)
+        INNER JOIN produto ON (produto_estoque.produto_id = produto.produto_id)";
+
         try {
             $result = $this->db->query($sql);
-
-            $resultO = $this->queryRowsToListOfObjects($result, "Produto_estoque");
+                //var_dump($result);
+            $resultO = $this->queryRowsToList($result, "Produto_estoque");
         } catch (Exception $exc) {
             echo $exc->getMessage();
             $resultO = null;
@@ -65,9 +68,9 @@ class Produto_estoqueFactory extends AbstractFactory {
         return $result;
     }
 
-    public function deletar($param) {
+    public function deletar($produto_estoque_id) {
         try {
-            $sql = "DELETE FROM Produto_estoque where email= '" . $param . "'";
+            $sql = "DELETE FROM Produto_estoque where produto_estoque_id = '" . $produto_estoque_id . "'";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {

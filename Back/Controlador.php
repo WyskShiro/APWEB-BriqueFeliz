@@ -347,7 +347,8 @@ class Controlador {
     }
 
     public function excluirEstoque() {
-        $listaFornecedores = $this->fornecedorFactory->listar();
+        $listaEstoques = $this->produtoEstoqueFactory->listar();
+        //var_dump($listaEstoques);
 
         //var_dump ($listaFuncionarios);
 
@@ -355,8 +356,9 @@ class Controlador {
     }
 
     public function excluirEstoqueBanco() {
-        $resultado = $this->fornecedorFactory->deletar($_POST["fornecedor_id"]);
-        $listaFornecedores = $this->fornecedorFactory->listar();
+        //var_dump($_POST["produto_estoque_id"]);
+        $resultado = $this->produtoEstoqueFactory->deletar($_POST["produto_estoque_id"]);
+        $listaEstoques = $this->produtoEstoqueFactory->listar();
 
         //var_dump ($listaFuncionarios);
         require 'Front/HTML/estoque/excluir_estoque.php';

@@ -61,6 +61,9 @@
                             <a class="nav-link" href="?funcao=alterar_estoque">Alterar Estoque de um Produto</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="?funcao=excluir_estoque">Excluir Estoque de um Produto</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link">Alterar descrição de um Produto</a>
                         </li>
                     </div>

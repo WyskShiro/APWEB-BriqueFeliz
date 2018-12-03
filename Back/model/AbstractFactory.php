@@ -60,6 +60,21 @@ abstract class AbstractFactory {
         return $list;
     }
 
+    protected function queryRowsToList
+            (PDOStatement $result, $nameObject) {
+        $list = array();
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        //var_dump($result);
+        foreach ($result as $row) {
+            //unset($row[0]);
+            //$ref = new ReflectionClass($nameObject);
+            //$list[] = $ref->newInstanceArgs($row);
+            array_push($list,$row);
+
+        }
+        return $list;
+    }
+
 }
 
 ?>
