@@ -5,7 +5,7 @@
 
 <div class="alert alert-success">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <span>Funfou</span>
+    <span>A operação foi realizada com sucesso!</span>
 </div>
 
 <?php
@@ -14,7 +14,7 @@
 
 <div class="alert alert-danger">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <span>Não Funfou</span>
+    <span>Não foi possível realizar esta ação, tente novamente!</span>
 </div>
 
 <?php
