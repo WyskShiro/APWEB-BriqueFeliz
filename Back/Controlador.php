@@ -1,15 +1,23 @@
 <?php
 require_once("Back/model/FuncionarioFactory.php");
 require_once("Back/model/Funcionario.php");
+
 require_once("Back/model/Produto.php");
 require_once("Back/model/ProdutoFactory.php");
+
 require_once("Back/model/Fornecedor.php");
 require_once("Back/model/FornecedorFactory.php");
+
+require_once("Back/model/Produto_estoque.php");
+require_once("Back/model/Produto_estoqueFactory.php");
+
 
 class Controlador {
     private $funcionarioFactory;
     private $produtoFactory;
     private $fornecedorFactory;
+    private $produtoEstoqueFactory;
+
 
     public function __construct() {
         ini_set('error_reporting', E_ALL);
@@ -21,6 +29,7 @@ class Controlador {
         $this->funcionarioFactory = new FuncionarioFactory();
         $this->produtoFactory = new ProdutoFactory();
         $this->fornecedorFactory = new FornecedorFactory();
+        $this->produtoEstoqueFactory = new Produto_estoqueFactory();
 
         $f = "";
 
@@ -109,6 +118,22 @@ class Controlador {
                 $this->excluirFornecedorBanco();
                 break;
 
+            /**
+             * Produto - Estoque
+             */
+
+            case 'cadastrar_estoque':
+                $this->cadastrarEstoque();
+                break;
+            case 'cadastrar_estoque_banco':
+                $this->cadastrarEstoqueBanco();
+                break;
+            case 'excluir_estoque':
+                $this->excluirEstoque();
+                break;
+            case 'excluir_estoque_banco':
+                $this->excluirEstoqueBanco();
+                break;
         }
     }
 
@@ -221,6 +246,7 @@ class Controlador {
         $produto = new Produto(
             -1, // -1 pois como o ID é incremental, não é necessário a informação passada (mas só da pra ter um construtor, ai não da pra ter um sem isso)
             $_POST["nome"], 
+            $_POST["codigoDeBarras"], 
             $_POST["descricao"]
         );
         
@@ -290,6 +316,50 @@ class Controlador {
 
         //var_dump ($listaFuncionarios);
         require 'Front/HTML/fornecedor/excluir_fornecedor.php';
+    }
+
+
+
+    /**
+      * Produto - Estoque
+      */
+
+      public function cadastrarEstoque() {
+        $listaFornecedores = $this->fornecedorFactory->listar();
+        $listaProdutos = $this->produtoFactory->listar();
+
+        require 'Front/HTML/estoque/cadastrar_estoque.php';
+    }
+
+    public function cadastrarEstoqueBanco() {
+        $estoque = new Produto_estoque(
+            -1, // -1 pois como o ID é incremental, não é necessário a informação passada (mas só da pra ter um construtor, ai não da pra ter um sem isso)
+            $_POST["precoCompra"], 
+            $_POST["precoVenda"], 
+            $_POST["quantidade"], 
+            $_POST["listaFornecedores"], 
+            $_POST["listaProdutos"]
+        );
+
+        $resultado = $this->produtoEstoqueFactory->salvar($estoque);
+        
+        require 'Front/HTML/estoque/cadastrar_estoque.php';
+    }
+
+    public function excluirEstoque() {
+        $listaFornecedores = $this->fornecedorFactory->listar();
+
+        //var_dump ($listaFuncionarios);
+
+        require 'Front/HTML/estoque/excluir_estoque.php';
+    }
+
+    public function excluirEstoqueBanco() {
+        $resultado = $this->fornecedorFactory->deletar($_POST["fornecedor_id"]);
+        $listaFornecedores = $this->fornecedorFactory->listar();
+
+        //var_dump ($listaFuncionarios);
+        require 'Front/HTML/estoque/excluir_estoque.php';
     }
 
     /**

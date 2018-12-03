@@ -13,6 +13,8 @@
  */
 class Produto_estoque {
 
+    
+    private $produto_estoque_id;
     private $preco_compra;
     private $preco_venda;
     private $quantitade;
@@ -20,9 +22,13 @@ class Produto_estoque {
     private $produto_id;
 
 
-    public function Produto_estoque($preco_venda, $quantitade) {
+    public function Produto_estoque($produto_estoque_id, $preco_compra, $preco_venda, $quantitade, $fornecedor_id, $produto_id) {
+        $this->produto_estoque_id = $produto_estoque_id;
+        $this->preco_compra = $preco_compra;
         $this->preco_venda = $preco_venda;
         $this->quantitade = $quantitade;
+        $this->fornecedor_id = $fornecedor_id;
+        $this->produto_id = $produto_id;
     }
 
     public function getPreco_compra() {

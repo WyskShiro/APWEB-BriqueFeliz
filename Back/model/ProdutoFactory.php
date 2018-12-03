@@ -46,9 +46,11 @@ class ProdutoFactory extends AbstractFactory {
     public function salvar($obj) {
         $Produto = $obj;
         try {
-            $sql = "INSERT INTO  Produto(nome,descricao)" .
-                    "VALUES ( '" . $Produto->getNome() . "', '"
-                    . $Produto->getDescricao() . "')";
+            $sql = "INSERT INTO  Produto(nome, codigo_de_barras, descricao)" .
+                    "VALUES ( '" . 
+                    $Produto->getNome() . "', '" . 
+                    $Produto->getCodigoDeBarras() . "', '" . 
+                    $Produto->getDescricao() . "')";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {

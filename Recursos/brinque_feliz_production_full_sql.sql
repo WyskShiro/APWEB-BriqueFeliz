@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS "funcionario" (
 CREATE TABLE 'produto' (
   'produto_id' INTEGER PRIMARY KEY,
   'nome' TEXT  NOT NULL,
+  'codigo_de_barras' INTEGER NOT NULL,
   'descricao' text
 );
 
@@ -65,7 +66,6 @@ CREATE TABLE 'produto_venda' (
 
 CREATE TABLE 'produto_estoque' (
   'produto_estoque_id' INTEGER PRIMARY KEY,
-  'codigo_de_barras' INTEGER NOT NULL,
   'preco_compra' float NOT NULL ,
   'preco_venda' float NOT NULL,
   'quantidade' INTEGER NOT NULL,

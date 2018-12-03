@@ -46,9 +46,13 @@ class Produto_estoqueFactory extends AbstractFactory {
     public function salvar($obj) {
         $Produto_estoque = $obj;
         try {
-            $sql = "INSERT INTO  Produto_estoque(nome,email)" .
-                    "VALUES ( '" . $Produto_estoque->getNome() . "', '"
-                    . $Produto_estoque->getEmail() . "')";
+            $sql = "INSERT INTO  Produto_estoque(preco_compra, preco_venda, quantidade, fornecedor_id, produto_id)" .
+                    "VALUES ( '" . 
+                    $Produto_estoque->getPreco_compra() . "', '". 
+                    $Produto_estoque->getPreco_venda() . "', '". 
+                    $Produto_estoque->getQuantidade() . "', '". 
+                    $Produto_estoque->getFornecedor_id() . "', '". 
+                    $Produto_estoque->getProduto_id() . "')";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {

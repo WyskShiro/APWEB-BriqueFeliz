@@ -23,7 +23,7 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Adicionar produto</h1>
+            <h1 class="h2">Adicionar Estoque para um Produto</h1>
 
             <div class="btn-toolbar mb-2 mb-md-0">
 
@@ -37,31 +37,66 @@
             <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
 
             <form method="post">
-                <input type="hidden" name="funcao" value="cadastrar_produto_banco" />
+                <input type="hidden" name="funcao" value="cadastrar_estoque_banco" />
 
 
                 <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+                    <label for="nome">Fornecedores:</label>
+
+                    <select class="form-control" id="listaFornecedores" name="listaFornecedores">
+                        <?php 
+                            foreach($listaFornecedores as $fornecedor) {
+
+                        ?>
+                        <option value="<?php echo $fornecedor->getFornecedorId() ?>">
+                            <?php echo $fornecedor->getNome_fantasia() ?>
+                        </option>
+
+                        <?php
+                            }
+                        ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="codigoDeBarrasProduto">Código de barras</label>
-                    <input type="number" class="form-control" id="codigoDeBarras" name="codigoDeBarras" placeholder="Código">
+                    <label for="nome">Produtos:</label>
+
+                    <select class="form-control" id="listaProdutos" name="listaProdutos">
+                        <?php 
+                            foreach($listaProdutos as $produto) {
+
+                        ?>
+                        <option value="<?php echo $produto->getProdutoId() ?>">
+                            <?php echo $produto->getNome() ?>
+                        </option>
+
+                        <?php
+                            }
+                        ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="descricao">Descrição</label>
-                    <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
+                    <label for="precoCompra">Preço de Compra (unidade)</label>
+                    <input type="number" class="form-control" id="precoCompra" name="precoCompra" placeholder="Preço de Compra (unidade)">
                 </div>
+
+                <div class="form-group">
+                    <label for="precoVenda">Preço de Venda (unidade)</label>
+                    <input type="number" class="form-control" id="precoVenda" name="precoVenda" placeholder="Preço de Venda (unidade)">
+                </div>
+
+                <div class="form-group">
+                    <label for="quantidade">Quantidade (unidade)</label>
+                    <input type="number" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade (unidade)">
+                </div>
+
                 <button type="submit" value='cadastrarProduto' class="btn btn-primary">Enviar</button>
             </form>
         </div>
     </main>
 
-    </div>
 
-    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
