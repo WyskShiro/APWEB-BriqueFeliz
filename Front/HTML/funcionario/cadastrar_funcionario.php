@@ -35,22 +35,28 @@
     <!--
         ----- TODO se tiver dados de funcionário vindo do servidor -> carregá-los nos elementos
     -->
-    <div class="container-fluid">
-        <div class="row content">
-            <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
+ 
+        <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
 
-            <div class="col-sm-9">
-                <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Adicionar funcionário</h1>
+            
+          </div>
+
+          <div class="col-sm-9">
+                <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php' ?>
 
                 <form method="post">
                     <input type="hidden" name="funcao" value="cadastrar_funcionario_banco" />
 
                     <?php
-            /**
-             * SE TIVER VINDO DADOS -> SETAR UMA VARIAVEL DE CONTROLE DE ALTERAR COMO TRUE
-             * **** UTILIZAR PARA DIFERENCIAR ALTERAR DE ADICIONAR
-             */
-            ?>
+
+                    /**
+                     * SE TIVER VINDO DADOS -> SETAR UMA VARIAVEL DE CONTROLE DE ALTERAR COMO TRUE
+                     * **** UTILIZAR PARA DIFERENCIAR ALTERAR DE ADICIONAR
+                     */
+                    ?>
 
                     <div class="form-group">
                         <label for="nomeFuncionario">Nome:</label>
@@ -96,6 +102,13 @@
                     <input type="submit" value='Enviar' class="btn btn-primary" />
                 </form>
             </div>
+        </main>
+
+
+
+
+
+            
         </div>
     </div>
 

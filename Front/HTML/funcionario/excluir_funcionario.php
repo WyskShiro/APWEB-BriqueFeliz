@@ -18,9 +18,16 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row content">
+   
+
             <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
+
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Excluir funcionário</h1>
+            
+            </div>
 
             <div class="col-sm-9">
                 <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
@@ -63,6 +70,7 @@
                     </tbody>
                 </table>
             </div>
+        </main>
         </div>
     </div>
 
