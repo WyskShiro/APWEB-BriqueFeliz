@@ -176,7 +176,7 @@ class Controlador {
         $_POST["telefoneCelular"],
         $_POST["email"],
         $_POST["dataContratacao"],
-        1 //1 pois todo usuário cadastrado deve ser normal/não admin (eu acho)
+        1 //1 pois todos usuários cadastrados devem ser normal/não admin (eu acho)
     );
 
         //var_dump($funcionario);
