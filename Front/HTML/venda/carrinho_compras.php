@@ -1,4 +1,7 @@
-<?$listaProdutosVenda = $this->produtoVendaFactory->listarVenda($venda_id);?>
+<?
+$listaProdutosVenda = $this->produtoVendaFactory->listarVenda($venda_id);
+$valorTotalGeral = 0;
+?>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -26,6 +29,14 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Carrinho de Compras</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <form method="post">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-success" value="registrar_venda">Adicionar mais itens</button>
+                </div>
+                <input type="hidden" name="funcao" value="registrar_venda" />
+            </form>
+        </div>
 
     </div>
 
@@ -56,7 +67,11 @@
 
                 <td id="precoUnitario[<?=$produtoVenda->getProdutoEstoqueId();?>]"><?=number_format(($produtoEstoque[0]->getPreco_venda()), 2, ',', '.');?></td>
 
-                <td id="precoTotal[<?=$produtoVenda->getProdutoEstoqueId();?>]"><?=number_format(($produtoVenda->getQuantitade()*$produtoEstoque[0]->getPreco_venda()), 2, ',', '.');;?></td>
+                <?
+                $valorTotalItem = $produtoVenda->getQuantitade()*$produtoEstoque[0]->getPreco_venda();
+                $valorTotalGeral += $valorTotalItem;
+                ?>
+                <td id="precoTotal[<?=$produtoVenda->getProdutoEstoqueId();?>]"><?=number_format($valorTotalItem, 2, ',', '.');?></td>
 
                 <td id="deletar[<?=$produtoVenda->getProdutoEstoqueId();?>]">
                     <form method="post">
@@ -71,6 +86,16 @@
         </table>
         <div class="btn-toolbar mb-2 mb-md-0">
             <form method="post">
+                <h6>Valor total da compra em R$: <?=number_format($valorTotalGeral, 2, ',', '.');?>.</h6>
+                <input type="hidden" name="valor_total" value="<?=$valorTotalGeral?>"/>
+                <div class="form-group">
+                    <h6>Forma de pagamento:</h6>
+                    <select class="form-control" id="forma_pagamento" name="forma_pagamento">
+                        <option value="Dinheiro" id="forma_pagamento" name="forma_pagamento">Dinheiro</option>
+                        <option value="Cartão" id="forma_pagamento" name="forma_pagamento">Cartão</option>
+                        <option value="Cheque" id="forma_pagamento" name="forma_pagamento">Cheque</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-outline-success" value="finalizar_venda">Finalizar Venda</button>
                 </div>

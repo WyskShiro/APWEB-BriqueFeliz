@@ -18,7 +18,7 @@ class VendaFactory extends AbstractFactory {
     //put your code here
 
     public function buscar($param) {
-        $sql = "SELECT * FROM Venda where email = '" . $param . "'";
+        $sql = "SELECT * FROM venda where venda_id = " . $param . ";";
         try {
             $result = $this->db->query($sql);
 
@@ -31,7 +31,8 @@ class VendaFactory extends AbstractFactory {
     }
 
     public function listar() {
-        $sql = "SELECT * FROM Venda";
+        //lista todas vendas concluidas
+        $sql = "SELECT * FROM venda where concluida = 1";
         try {
             $result = $this->db->query($sql);
 
@@ -80,7 +81,7 @@ class VendaFactory extends AbstractFactory {
 
     public function deletar($param) {
         try {
-            $sql = "DELETE FROM Venda where email= '" . $param . "'";
+            $sql = "DELETE FROM venda where venda_id= " . $param . ";";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
@@ -96,6 +97,36 @@ class VendaFactory extends AbstractFactory {
     public function alterar($obj1,$venda_id) {
         try {
             $sql = "UPDATE venda set concluida =" . $obj1 . " where venda_id=". $venda_id.";";
+            if ($this->db->exec($sql)) {
+                $result = true;
+            } else {
+                $result = false;
+            }
+        } catch (Exception $exc) {
+            echo $exc->getMessage();
+            $result = false;
+        }
+        return $result;
+    }
+
+    public function alterarPagamento($obj1, $venda_id){
+        try {
+            $sql = "UPDATE venda set metodo_pagamento ='" . $obj1 . "' where venda_id=". $venda_id.";";
+            if ($this->db->exec($sql)) {
+                $result = true;
+            } else {
+                $result = false;
+            }
+        } catch (Exception $exc) {
+            echo $exc->getMessage();
+            $result = false;
+        }
+        return $result;
+    }
+
+    public function alterarValorTotal($obj1, $venda_id){
+        try {
+            $sql = "UPDATE venda set valor_total =" . $obj1 . " where venda_id=". $venda_id.";";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {

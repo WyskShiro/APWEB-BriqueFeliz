@@ -18,7 +18,7 @@ class Produto_estoqueFactory extends AbstractFactory {
     //put your code here
 
     public function buscar($param) {
-        $sql = "SELECT * FROM produto_estoque where produto_estoque_id = '" . $param . "'";
+        $sql = "SELECT * FROM produto_estoque where produto_estoque_id = " . $param . ";";
         try {
             $result = $this->db->query($sql);
 
@@ -100,6 +100,21 @@ class Produto_estoqueFactory extends AbstractFactory {
     public function alterar($obj1,$obj2,$email) {
         try {
             $sql = "UPDATE Produto_estoque set nome ='" . $obj1 . "', email='" .$obj2 . "'where email='". $email."'";
+            if ($this->db->exec($sql)) {
+                $result = true;
+            } else {
+                $result = false;
+            }
+        } catch (Exception $exc) {
+            echo $exc->getMessage();
+            $result = false;
+        }
+        return $result;
+    }
+
+    public function alterarQuantidade($obj1,$produto_estoque_id){
+        try {
+            $sql = "UPDATE produto_estoque set quantidade =" . $obj1 . " where produto_estoque_id=". $produto_estoque_id.";";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
