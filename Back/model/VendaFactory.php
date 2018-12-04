@@ -57,11 +57,15 @@ class VendaFactory extends AbstractFactory {
     }
 
     public function salvar($obj) {
-        $Venda = $obj;
+        $venda = $obj;
         try {
             $sql = "INSERT INTO  venda(valor_total, metodo_pagamento, desconto, cliente_id, funcionario_id, concluida)" .
-                    "VALUES ( '" . $Venda->getNome() . "', '"
-                    . $Venda->getEmail() . "')";
+                    "VALUES ( '" . $venda->getValorTotal() . "', '"
+                    . $venda->getMetodoPagamento() . "', '"
+                    . $venda->getDesconto() . "', '"
+                    . $venda->getClienteId() . "', '"
+                    . $venda->getFuncionarioId() . "', '"
+                    . $venda->getConcluida() . "')";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
@@ -91,7 +95,7 @@ class VendaFactory extends AbstractFactory {
 
     public function alterar($obj1,$venda_id) {
         try {
-            $sql = "UPDATE venda set concluida ='" . $obj1 . "'where venda_id='". $venda_id."'";
+            $sql = "UPDATE venda set concluida =" . $obj1 . " where venda_id=". $venda_id.";";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {

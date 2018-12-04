@@ -44,7 +44,7 @@ class Produto_vendaFactory extends AbstractFactory {
     }
 
     public function listarVenda($vendaId) {
-        $sql = "SELECT * FROM produto_venda where venda_id ='". $vendaId . "';";
+        $sql = "SELECT * FROM produto_venda where venda_id =". $vendaId . ";";
         try {
             $result = $this->db->query($sql);
 
