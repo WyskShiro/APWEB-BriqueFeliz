@@ -29,6 +29,14 @@ $valorTotalGeral = 0;
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Carrinho de Compras</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <form method="post">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-success" value="registrar_venda">Adicionar mais itens</button>
+                </div>
+                <input type="hidden" name="funcao" value="registrar_venda" />
+            </form>
+        </div>
 
     </div>
 

@@ -18,7 +18,7 @@ class VendaFactory extends AbstractFactory {
     //put your code here
 
     public function buscar($param) {
-        $sql = "SELECT * FROM Venda where email = '" . $param . "'";
+        $sql = "SELECT * FROM venda where venda_id = " . $param . ";";
         try {
             $result = $this->db->query($sql);
 

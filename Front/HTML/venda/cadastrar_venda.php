@@ -59,7 +59,7 @@ $listaProdutosInicial = $this->produtoFactory->listarProdutoEstoque();
                     <?// listar produtos
                     foreach($listaProdutosInicial as $produto) {
                         ?>
-                        <option name="<?=$produto->getQuantidade();?>" value="<?=$produto->getProdutoEstoqueId();?>"><?=$produto->getNome();?></option>
+                        <option name="<?=$produto->getQuantidade();?>" value="<?=$produto->getProdutoEstoqueId();?>"><?=$produto->getNome();?> | Quantidade disponível: <?=$produto->getQuantidade();?></option>
                     <?}?>
                 </select>
             </div>

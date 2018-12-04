@@ -191,6 +191,9 @@ class Controlador {
             case 'excluir_venda':
                 $this->deletarVenda();
                 break;
+            case 'listar_produtos_da_venda':
+                $this->listarProdutosVenda();
+                break;
 
             default:
                 $this->home();
@@ -356,46 +359,55 @@ class Controlador {
          {
              $produto_estoque_id = $_POST["produtoVenda"];
              $quantidade = $_POST["quantidade"];
-             $venda = $this->vendaFactory->listarVendasNaoConcluidas();
-             if($venda == false)
+             $produtoDesejado = $this->produtoEstoqueFactory->buscar($produto_estoque_id);
+             $quantidadeDisponivel = $produtoDesejado[0]->getQuantidade();
+             if ($quantidade > $quantidadeDisponivel)
              {
-                 // caso não exista uma venda em aberto será criada
-                 $venda = new Venda(-1,0,"",0,0,0,0);
-                 $result = $this->vendaFactory->Salvar($venda);
-
-                 //lista novamente para pegar o id da venda criada
-                 $venda = $this->vendaFactory->listarVendasNaoConcluidas();
-
-                 $venda_id = $venda[0]->getVendaId();
-                 $produto_venda = new Produto_venda($venda_id,$produto_estoque_id,$quantidade);
-                 //aqui não precisa validar se o item existe, já que será o primeiro item a ser adicionado a venda
-                 $resultado = $this->produtoVendaFactory->Salvar($produto_venda);
+                 $resultado = false;
              }
              else
              {
-                 //adiciona o produto ao carrinho ou seja produto_venda
-                $venda_id = $venda[0]->getVendaId();
-                $produto_venda = new Produto_venda($venda_id,$produto_estoque_id,$quantidade);
+                 $venda = $this->vendaFactory->listarVendasNaoConcluidas();
+                 if($venda == false)
+                 {
+                     // caso não exista uma venda em aberto será criada
+                     $venda = new Venda(-1,0,"",0,0,0,0);
+                     $result = $this->vendaFactory->Salvar($venda);
 
-                //antes de salvar é necessário validar se o produto existe na venda
-                $listaProdutosVenda = $this->produtoVendaFactory->listarVenda($venda_id);
-                $existe = false;
-                foreach ($listaProdutosVenda as $produto){
-                    if($produto->getProdutoEstoqueId() == $produto_venda->getProdutoEstoqueId()){
-                        $existe = true;
-                        break;
-                    }
-                }
-                if($existe == false)
-                {
-                    //não existe este item na venda então pode salvar
-                    $resultado = $this->produtoVendaFactory->Salvar($produto_venda);
-                }
-                else
-                {
-                    // existe o produto, exibe mensagem de erro
-                    $resultado = false;
-                }
+                     //lista novamente para pegar o id da venda criada
+                     $venda = $this->vendaFactory->listarVendasNaoConcluidas();
+
+                     $venda_id = $venda[0]->getVendaId();
+                     $produto_venda = new Produto_venda($venda_id,$produto_estoque_id,$quantidade);
+                     //aqui não precisa validar se o item existe, já que será o primeiro item a ser adicionado a venda
+                     $resultado = $this->produtoVendaFactory->Salvar($produto_venda);
+                 }
+                 else
+                 {
+                     //adiciona o produto ao carrinho ou seja produto_venda
+                     $venda_id = $venda[0]->getVendaId();
+                     $produto_venda = new Produto_venda($venda_id,$produto_estoque_id,$quantidade);
+
+                     //antes de salvar é necessário validar se o produto existe na venda
+                     $listaProdutosVenda = $this->produtoVendaFactory->listarVenda($venda_id);
+                     $existe = false;
+                     foreach ($listaProdutosVenda as $produto){
+                         if($produto->getProdutoEstoqueId() == $produto_venda->getProdutoEstoqueId()){
+                             $existe = true;
+                             break;
+                         }
+                     }
+                     if($existe == false)
+                     {
+                         //não existe este item na venda então pode salvar
+                         $resultado = $this->produtoVendaFactory->Salvar($produto_venda);
+                     }
+                     else
+                     {
+                         // existe o produto, exibe mensagem de erro
+                         $resultado = false;
+                     }
+                 }
              }
          }
          require 'Front/HTML/venda/cadastrar_venda.php';
@@ -470,6 +482,12 @@ class Controlador {
 
          require 'Front/HTML/venda/listar_vendas.php';
      }
+
+    public function listarProdutosVenda(){
+        $venda_id = $_POST["venda_id"];
+        require 'Front/HTML/venda/listar_itens_venda.php';
+    }
+
      /**
       * Fornecedor
       */
@@ -511,7 +529,6 @@ class Controlador {
         //var_dump ($listaFuncionarios);
         require 'Front/HTML/fornecedor/excluir_fornecedor.php';
     }
-
 
 
     /**
