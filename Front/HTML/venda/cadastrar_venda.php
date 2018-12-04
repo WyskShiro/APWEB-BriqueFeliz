@@ -17,6 +17,7 @@ $listaProdutosInicial = $this->produtoFactory->listarProdutoEstoque();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="main.css" type="text/css" rel="stylesheet">
     <title>Brinque Feliz</title>
 
     <!-- Latest compiled and minified CSS -->
@@ -34,7 +35,7 @@ $listaProdutosInicial = $this->produtoFactory->listarProdutoEstoque();
 <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
 
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 h-100">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Registrar Venda</h1>
 
@@ -77,10 +78,11 @@ $listaProdutosInicial = $this->produtoFactory->listarProdutoEstoque();
 </div>
 
 
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<!-- Icons -->
 <script>
-// todo validar dados (QUANTIDADE)
+    feather.replace()
 </script>
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"

@@ -33,9 +33,10 @@
                         </li>
                         </li>
                         <li class="has-subnav">
+                            <a href="?funcao=listar_venda">
                             <i class="fa fa-home fa-2x"></i>
                             <span class="nav-text">
-                                <a class="nav-text" href="?funcao=listar_venda"> Listar Vendas</a>
+                                    Listar Venda</a>
                             </span>
                         </li>
                     </div>
