@@ -16,6 +16,8 @@ $listaProdutosInicial = $this->produtoFactory->listar();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="main.css" type="text/css" rel="stylesheet">
+
     <title>Brinque Feliz</title>
 
     <!-- Latest compiled and minified CSS -->
@@ -33,7 +35,7 @@ $listaProdutosInicial = $this->produtoFactory->listar();
 <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
 
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 h-100">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Registrar Venda</h1>
 
@@ -41,6 +43,10 @@ $listaProdutosInicial = $this->produtoFactory->listar();
             <button type="button" class="btn btn-outline-danger">Cancelar</button>
         </div>
     </div>
+    <div class="col-sm-9">
+
+
+    
             <h6 for="buscaCodigoDeBarra">Código de barras do produto:</h6>
             <input type="text" class="form-control" id="codigoDeBarras" aria-describedby="buscaCodigo" placeholder="Código do produto" oninput="JavaScript: return atualizarLista(codigoDeBarras);">
             <h6>Selecione o produto:</h6>
@@ -77,10 +83,7 @@ $listaProdutosInicial = $this->produtoFactory->listar();
 
 
 
-    <div class="col-sm-9">
         <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
-
-
 
     </div>
 </main>
@@ -111,6 +114,14 @@ $listaProdutosInicial = $this->produtoFactory->listar();
         document.getElementById("precoVenda").innerHTML = "<?if(isset($produto["precoVenda"]))echo $produto["precoVenda"];?>";
     }
 </script>
+
+  <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+
+<!-- Icons -->
+<script>
+    feather.replace()
+</script>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

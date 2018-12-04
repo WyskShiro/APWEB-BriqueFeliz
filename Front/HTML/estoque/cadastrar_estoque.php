@@ -7,6 +7,8 @@ $listaProdutos = $this->produtoFactory->listar();?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="main.css" type="text/css" rel="stylesheet">
+
     <title>Brinque Feliz</title>
 
     <!-- Latest compiled and minified CSS -->
@@ -98,6 +100,12 @@ $listaProdutos = $this->produtoFactory->listar();?>
         </div>
     </main>
 
+  <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+
+<!-- Icons -->
+<script>
+    feather.replace()
+</script>
 
 
 
