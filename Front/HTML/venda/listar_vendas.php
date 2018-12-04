@@ -5,7 +5,7 @@
  * Date: 04/12/18
  * Time: 06:55
  */?>
-<?
+<?php
 $listaVenda = $this->vendaFactory->listar();
 ?>
 <!DOCTYPE html>
@@ -60,31 +60,31 @@ $listaVenda = $this->vendaFactory->listar();
             </tr>
             </thead>
             <tbody>
-            <?foreach ($listaVenda as $venda){?>
+            <?php foreach ($listaVenda as $venda){?>
                 <tr>
-                    <td id="numeroVenda[<?=$venda->getVendaId();?>]"><?=$venda->getVendaId();?></td>
+                    <td id="numeroVenda[<?php echo $venda->getVendaId();?>]"><?php echo $venda->getVendaId();?></td>
 
-                    <td id="valorTotal[<?=$venda->getVendaId();?>]"><?=number_format($venda->getValorTotal(), 2, ',', '.');?></td>
+                    <td id="valorTotal[<?php echo $venda->getVendaId();?>]"><?php echo number_format($venda->getValorTotal(), 2, ',', '.');?></td>
 
-                    <td id="metodoPagamento[<?=$venda->getVendaId();?>]"><?=$venda->getMetodoPagamento();?></td>
+                    <td id="metodoPagamento[<?php echo $venda->getVendaId();?>]"><?php echo $venda->getMetodoPagamento();?></td>
 
-                    <td id="deletar[<?=$venda->getVendaId();?>]">
+                    <td id="deletar[<?php echo $venda->getVendaId();?>]">
                         <form method="post">
                             <input type="hidden" name="funcao" value="listar_produtos_da_venda">
-                            <input type="hidden" name="venda_id" value="<?=$venda->getVendaId();?>">
+                            <input type="hidden" name="venda_id" value="<?php echo $venda->getVendaId();?>">
                             <input class="btn btn-danger" type="submit" value="Ver itens">
                         </form>
                     </td>
 
-                    <td id="deletar[<?=$venda->getVendaId();?>]">
+                    <td id="deletar[<?php echo $venda->getVendaId();?>]">
                         <form method="post">
                             <input type="hidden" name="funcao" value="excluir_venda">
-                            <input type="hidden" name="venda_id" value="<?=$venda->getVendaId();?>">
+                            <input type="hidden" name="venda_id" value="<?php echo $venda->getVendaId();?>">
                             <input class="btn btn-danger" type="submit" value="Deletar">
                         </form>
                     </td>
                 </tr>
-            <?}?>
+            <?php }?>
             </tbody>
         </table>
     </div>
