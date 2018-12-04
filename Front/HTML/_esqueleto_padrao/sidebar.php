@@ -15,7 +15,7 @@
                     </li>
                     <div class="collapse" id="collapseGerenciarVendas">
                         <li class="nav-item">
-                            <a class="nav-link" href="?funcao=cadastrar_funcionario">Realizar Venda</a>
+                            <a class="nav-link" href="?funcao=registrar_venda">Realizar Venda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link">Listar Vendas</a>
