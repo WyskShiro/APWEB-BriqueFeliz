@@ -1,4 +1,4 @@
-<?
+<?php 
 $listaProdutosVenda = $this->produtoVendaFactory->listarVenda($venda_id);
 $valorTotalGeral = 0;
 ?>
@@ -25,7 +25,13 @@ $valorTotalGeral = 0;
 
 <body>
 
-<?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
+<?php echo include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
+
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<!-- Icons -->
+<script>
+    feather.replace()
+</script>
 
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
@@ -57,39 +63,39 @@ $valorTotalGeral = 0;
             </tr>
             </thead>
             <tbody>
-            <?foreach ($listaProdutosVenda as $produtoVenda){
+            <?php foreach ($listaProdutosVenda as $produtoVenda){
                 //Pegar informações dos produtos já que só tem o id do produto_estoque, quantidade de itens na venda
                 $produtoEstoque = $this->produtoEstoqueFactory->buscar($produtoVenda->getProdutoEstoqueId());
                 $produto = $this->produtoFactory->buscar($produtoEstoque[0]->getProduto_id());
                 ?>
             <tr>
-                <td id="nomeProduto[<?=$produtoVenda->getProdutoEstoqueId();?>]"><?=$produto[0]->getNome();?></td>
+                <td id="nomeProduto[<?php echo $produtoVenda->getProdutoEstoqueId();?>]"><?php echo $produto[0]->getNome();?></td>
 
-                <td id="quantidadeDisponivel[<?=$produtoVenda->getProdutoEstoqueId();?>]"><?=$produtoVenda->getQuantitade();?></td>
+                <td id="quantidadeDisponivel[<?php echo $produtoVenda->getProdutoEstoqueId();?>]"><?php echo $produtoVenda->getQuantitade();?></td>
 
-                <td id="precoUnitario[<?=$produtoVenda->getProdutoEstoqueId();?>]"><?=number_format(($produtoEstoque[0]->getPreco_venda()), 2, ',', '.');?></td>
+                <td id="precoUnitario[<?php echo $produtoVenda->getProdutoEstoqueId();?>]"><?php echo number_format(($produtoEstoque[0]->getPreco_venda()), 2, ',', '.');?></td>
 
-                <?
+                <?php echo
                 $valorTotalItem = $produtoVenda->getQuantitade()*$produtoEstoque[0]->getPreco_venda();
                 $valorTotalGeral += $valorTotalItem;
                 ?>
-                <td id="precoTotal[<?=$produtoVenda->getProdutoEstoqueId();?>]"><?=number_format($valorTotalItem, 2, ',', '.');?></td>
+                <td id="precoTotal[<?php echo $produtoVenda->getProdutoEstoqueId();?>]"><?php echo number_format($valorTotalItem, 2, ',', '.');?></td>
 
-                <td id="deletar[<?=$produtoVenda->getProdutoEstoqueId();?>]">
+                <td id="deletar[<?php echo $produtoVenda->getProdutoEstoqueId();?>]">
                     <form method="post">
                         <input type="hidden" name="funcao" value="excluir_produto_carrinho">
-                        <input type="hidden" name="produto_estoque_id" value="<?=$produtoEstoque[0]->getProdutoEstoqueId();?>">
+                        <input type="hidden" name="produto_estoque_id" value="<?php echo $produtoEstoque[0]->getProdutoEstoqueId();?>">
                         <input class="btn btn-danger" type="submit" value="Deletar">
                     </form>
                 </td>
             </tr>
-            <?}?>
+            <?php }?>
             </tbody>
         </table>
         <div class="btn-toolbar mb-2 mb-md-0">
             <form method="post">
-                <h6>Valor total da compra em R$: <?=number_format($valorTotalGeral, 2, ',', '.');?>.</h6>
-                <input type="hidden" name="valor_total" value="<?=$valorTotalGeral?>"/>
+                <h6>Valor total da compra em R$: <?php echo number_format($valorTotalGeral, 2, ',', '.');?>.</h6>
+                <input type="hidden" name="valor_total" value="<?php echo $valorTotalGeral?>"/>
                 <div class="form-group">
                     <h6>Forma de pagamento:</h6>
                     <select class="form-control" id="forma_pagamento" name="forma_pagamento">
@@ -102,19 +108,13 @@ $valorTotalGeral = 0;
                     <button type="submit" class="btn btn-outline-success" value="finalizar_venda">Finalizar Venda</button>
                 </div>
                 <input type="hidden" name="funcao" value="finalizar_venda" />
-                <input type="hidden" name="venda_id" value="<?=$venda_id;?>" />
+                <input type="hidden" name="venda_id" value="<?php echo $venda_id;?>" />
             </form>
         </div>
     </div>
 </main>
 </div>
 </div>
-
-<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-<!-- Icons -->
-<script>
-    feather.replace()
-</script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

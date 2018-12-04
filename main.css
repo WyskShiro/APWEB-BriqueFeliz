@@ -27,23 +27,7 @@ img {
     padding: 48px 0 0; /* Height of navbar */
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
   }
-  
-  .sidebar-sticky {
-    position: relative;
-    top: 0;
-    height: calc(100vh - 48px);
-    padding-top: .5rem;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  }
-  
-  @supports ((position: -webkit-sticky) or (position: sticky)) {
-    .sidebar-sticky {
-      position: -webkit-sticky;
-      position: sticky;
-    }
-  }
-  
+
   .sidebar .nav-link {
     font-weight: 500;
     color: #333;
@@ -68,14 +52,8 @@ img {
     text-transform: uppercase;
   }
   
-  /*
-   * Content
+  
    */
-  
-  [role="main"] {
-    padding-top: 48px; /* Space for fixed navbar */
-  }
-  
   /*
    * Navbar
    */
@@ -105,12 +83,6 @@ img {
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
   }
   
-
-
-
-
-/* testeeeeeeeeeeeeeeeeeeeeee */
-
 
 
 .fa-2x {
@@ -185,12 +157,6 @@ img {
   vertical-align:middle;
   width:190px;
     font-family: 'Titillium Web', sans-serif;
-  }
-  
-  .main-menu>ul.logout {
-  position:absolute;
-  left:0;
-  bottom:0;
   }
   
   .no-touch .scrollable.hover {
