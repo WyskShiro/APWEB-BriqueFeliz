@@ -57,7 +57,7 @@
             </div>
 
             <div class="col-md-6 px-0 bg-dark"> 
-                <img src="Recursos/toy.jpg" class="h-100 img-fluid img-thumbnailrounded mx-auto d-block" alt="Nature" style="width:100%">            
+                <img src="Recursos/telaInicialImg.jpg" class="h-100 img-fluid img-thumbnailrounded mx-auto d-block" alt="Nature" style="width:100%">            
             </div>
 
 
