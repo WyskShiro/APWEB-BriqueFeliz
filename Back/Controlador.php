@@ -14,6 +14,14 @@ require_once("Back/model/Produto_estoqueFactory.php");
 require_once ("Back/model/Categoria.php");
 require_once ("Back/model/CategoriaFactory.php");
 
+require_once ("Back/model/ProdutosParaVenda.php");
+
+require_once ("Back/model/Produto_venda.php");
+require_once ("Back/model/Produto_vendaFactory.php");
+
+require_once ("Back/model/Venda.php");
+require_once ("Back/model/VendaFactory.php");
+
 
 class Controlador {
     private $funcionarioFactory;
@@ -21,6 +29,8 @@ class Controlador {
     private $fornecedorFactory;
     private $produtoEstoqueFactory;
     private $categoriaFactory;
+    private $vendaFactory;
+    private $produtoVendaFactory;
 
 
     public function __construct() {
@@ -35,6 +45,8 @@ class Controlador {
         $this->fornecedorFactory = new FornecedorFactory();
         $this->produtoEstoqueFactory = new Produto_estoqueFactory();
         $this->categoriaFactory = new CategoriaFactory();
+        $this->vendaFactory = new VendaFactory();
+        $this->produtoVendaFactory = new Produto_vendaFactory();
 
         $f = "";
 
@@ -160,6 +172,18 @@ class Controlador {
              */
             case 'registrar_venda':
                 $this->registrarVenda();
+                break;
+            case 'adicionar_carrinho':
+                $this->adicionarCarrinho();
+                break;
+            case 'abrir_carrinho':
+                $this->abrirCarrinho();
+                break;
+            case 'finalizar_venda':
+                $this->finalizarVenda();
+                break;
+            case 'excluir_produto_carrinho':
+                $this->removerProdutoVenda();
                 break;
 
             default:
@@ -319,6 +343,94 @@ class Controlador {
 
      public function registrarVenda(){
          require 'Front/HTML/venda/cadastrar_venda.php';
+     }
+
+     public function adicionarCarrinho(){
+         if(isset($_POST["produtoVenda"]) && $_POST["produtoVenda"] != "" && isset($_POST["quantidade"]) && $_POST["quantidade"] != "")
+         {
+             $produto_estoque_id = $_POST["produtoVenda"];
+             $quantidade = $_POST["quantidade"];
+             $venda = $this->vendaFactory->listarVendasNaoConcluidas();
+             if($venda == false)
+             {
+                 // caso não exista uma venda em aberto será criada
+                 $venda = new Venda(-1,0,"",0,0,0,0);
+                 $result = $this->vendaFactory->Salvar($venda);
+
+                 //lista novamente para pegar o id da venda criada
+                 $venda = $this->vendaFactory->listarVendasNaoConcluidas();
+
+                 $venda_id = $venda[0]->getVendaId();
+                 $produto_venda = new Produto_venda($venda_id,$produto_estoque_id,$quantidade);
+                 //aqui não precisa validar se o item existe, já que será o primeiro item a ser adicionado a venda
+                 $resultado = $this->produtoVendaFactory->Salvar($produto_venda);
+             }
+             else
+             {
+                 //adiciona o produto ao carrinho ou seja produto_venda
+                $venda_id = $venda[0]->getVendaId();
+                $produto_venda = new Produto_venda($venda_id,$produto_estoque_id,$quantidade);
+
+                //antes de salvar é necessário validar se o produto existe na venda
+                $listaProdutosVenda = $this->produtoVendaFactory->listarVenda($venda_id);
+                foreach ($listaProdutosVenda as $produto){
+                    if($produto->getProdutoEstoqueId() == $produto_venda->getProdutoEstoqueId()){
+                        $existe = true;
+                        break;
+                    }
+                }
+                if($existe == false)
+                {
+                    //não existe este item na venda então pode salvar
+                    $resultado = $this->produtoVendaFactory->Salvar($produto_venda);
+                }
+                else
+                {
+                    // existe o produto, exibe mensagem de erro
+                    $resultado = false;
+                }
+             }
+         }
+         require 'Front/HTML/venda/cadastrar_venda.php';
+
+     }
+
+     public function finalizarVenda(){
+         $resultado = false;
+         if(isset($_POST["venda_id"]) && $_POST["venda_id"] != ""){
+             $venda_id = $_POST["venda_id"];
+             $resultado = $this->vendaFactory->alterar(1,$venda_id);
+         }
+
+         require 'Front/HTML/venda/cadastrar_venda.php';
+     }
+
+     public function removerProdutoVenda(){
+         $resultado = $this->produtoEstoqueFactory->deletar($_POST["produto_estoque_id"]);
+         $venda = $this->vendaFactory->listarVendasNaoConcluidas();
+         $venda_id = $venda[0]->getVendaId();
+
+         require 'Front/HTML/venda/carrinho_compras.php';
+     }
+
+     public function abrirCarrinho(){
+         $venda = $this->vendaFactory->listarVendasNaoConcluidas();
+         if($venda != false)
+         {
+             $venda_id = $venda[0]->getVendaId();
+         }
+         else
+         {
+             //não existe uma venda então deve criar;
+             $venda = new Venda(-1,0,"",0,0,0,0);
+             $result = $this->vendaFactory->Salvar($venda);
+
+             // depois é necessario pegar o novo id dessa venda
+             $venda = $this->vendaFactory->listarVendasNaoConcluidas();
+             $venda_id = $venda[0]->getVendaId();
+         }
+
+         require 'Front/HTML/venda/carrinho_compras.php';
      }
 
      /**
