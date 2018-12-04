@@ -18,7 +18,7 @@ class Produto_estoqueFactory extends AbstractFactory {
     //put your code here
 
     public function buscar($param) {
-        $sql = "SELECT * FROM Produto_estoque where email = '" . $param . "'";
+        $sql = "SELECT * FROM produto_estoque where produto_estoque_id = '" . $param . "'";
         try {
             $result = $this->db->query($sql);
 
@@ -30,8 +30,22 @@ class Produto_estoqueFactory extends AbstractFactory {
         return $resultO;
     }
 
+    public function buscarPorCodigo ($produtoCodigo){
+        $sql = "SELECT produto_estoque.quantidade, produto_estoque.preco_venda , produto.nome FROM produto
+        INNER JOIN produto_estoque ON (produto_estoque.produto_id = produto.produto_id) where produto.codigo_de_barras='".$produtoCodigo."'";
+        try {
+            $result = $this->db->query($sql);
+
+            $resultO = $this->queryRowsToList($result,"produto");
+        } catch (Exception $exc) {
+            echo $exc->getMessage();
+            $resultO = null;
+        }
+        return $resultO;
+    }
+
     public function listar() {
-        $sql = "SELECT * FROM Produto_estoque 
+        $sql = "SELECT * FROM produto_estoque 
         INNER JOIN fornecedor ON (produto_estoque.fornecedor_id = fornecedor.fornecedor_id)
         INNER JOIN produto ON (produto_estoque.produto_id = produto.produto_id)";
 

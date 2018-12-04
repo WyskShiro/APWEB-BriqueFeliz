@@ -155,6 +155,13 @@ class Controlador {
                 $this->excluirCategoriaBanco();
                 break;
 
+            /**
+             * Venda
+             */
+            case 'registrar_venda':
+                $this->registrarVenda();
+                break;
+
             default:
                 $this->home();
                 break;
@@ -309,6 +316,10 @@ class Controlador {
      /**
      * Venda
      */
+
+     public function registrarVenda(){
+         require 'Front/HTML/venda/cadastrar_venda.php';
+     }
 
      /**
       * Fornecedor

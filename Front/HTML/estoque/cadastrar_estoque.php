@@ -1,3 +1,5 @@
+<?$listaFornecedores = $this->fornecedorFactory->listar();
+$listaProdutos = $this->produtoFactory->listar();?>
 <!DOCTYPE html>
 <html lang="pt">
 

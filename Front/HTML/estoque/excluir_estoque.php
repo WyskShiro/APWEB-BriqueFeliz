@@ -38,7 +38,7 @@
                 <thead>
                     <tr>
                         <th>Nome do Produto</th>
-                        <th>Nome do Forncedor</th>
+                        <th>Nome do Fornecedor</th>
                         <th>Deletar ?</th>
                     </tr>
                 </thead>
