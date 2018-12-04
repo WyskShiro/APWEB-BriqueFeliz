@@ -55,7 +55,7 @@ $listaProdutosInicial = $this->produtoFactory->listarProdutoEstoque();
             <input type="hidden" name="funcao" value="adicionar_carrinho" />
             <div class="form-group">
                 <h6>Selecione o produto:</h6>
-                <select class="custom-select" size="4" id="produtoVenda" name="produtoVenda" ondblclick="moveFormulario('formulario_origem','formulario_destino','formulario_nomes',1);">
+                <select class="custom-select" size="4" id="produtoVenda" name="produtoVenda">
                     <?// listar produtos
                     foreach($listaProdutosInicial as $produto) {
                         ?>

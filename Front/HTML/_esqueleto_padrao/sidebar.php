@@ -18,7 +18,7 @@
                             <a class="nav-link" href="?funcao=registrar_venda">Realizar Venda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Listar Vendas</a>
+                            <a class="nav-link" href="?funcao=listar_venda">Listar Vendas</a>
                         </li>
                     </div>
 

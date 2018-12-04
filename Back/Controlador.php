@@ -185,6 +185,12 @@ class Controlador {
             case 'excluir_produto_carrinho':
                 $this->removerProdutoVenda();
                 break;
+            case 'listar_venda':
+                $this->listarVendas();
+                break;
+            case 'excluir_venda':
+                $this->deletarVenda();
+                break;
 
             default:
                 $this->home();
@@ -373,6 +379,7 @@ class Controlador {
 
                 //antes de salvar é necessário validar se o produto existe na venda
                 $listaProdutosVenda = $this->produtoVendaFactory->listarVenda($venda_id);
+                $existe = false;
                 foreach ($listaProdutosVenda as $produto){
                     if($produto->getProdutoEstoqueId() == $produto_venda->getProdutoEstoqueId()){
                         $existe = true;
@@ -397,9 +404,30 @@ class Controlador {
 
      public function finalizarVenda(){
          $resultado = false;
+         //agora devemos atualizar a venda e as quantidades do produto_estoque
          if(isset($_POST["venda_id"]) && $_POST["venda_id"] != ""){
+             //atualizar dados da venda
              $venda_id = $_POST["venda_id"];
              $resultado = $this->vendaFactory->alterar(1,$venda_id);
+
+             $metodo_pagamento = $_POST["forma_pagamento"];
+             $resultado = $this->vendaFactory->alterarPagamento($metodo_pagamento,$venda_id);
+
+             $valor_total = $_POST["valor_total"];
+             $resultado = $this->vendaFactory->alterarValorTotal($valor_total,$venda_id);
+
+             //listar todos produtos
+             $listaProdutosVenda = $this->produtoVendaFactory->listarVenda($_POST["venda_id"]);
+
+             //todo adicionar funcionario e cliente a venda
+
+
+             //atualizar quantidade em estoque
+             foreach ($listaProdutosVenda as $produto){
+                 $produtoEstoqueOld = $this->produtoEstoqueFactory->buscar($produto->getProdutoEstoqueId());
+                 $quantidadeNova = $produtoEstoqueOld[0]->getQuantidade() - $produto->getQuantitade() ;
+                 $resultado = $this->produtoEstoqueFactory->alterarQuantidade($produto->getQuantitade(),$produto->getProdutoEstoqueId());
+             }
          }
 
          require 'Front/HTML/venda/cadastrar_venda.php';
@@ -433,6 +461,15 @@ class Controlador {
          require 'Front/HTML/venda/carrinho_compras.php';
      }
 
+     public function listarVendas(){
+         require 'Front/HTML/venda/listar_vendas.php';
+     }
+
+     public function deletarVenda(){
+         $resultado = $this->vendaFactory->deletar($_POST["venda_id"]);
+
+         require 'Front/HTML/venda/listar_vendas.php';
+     }
      /**
       * Fornecedor
       */
