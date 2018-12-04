@@ -1,133 +1,243 @@
 <div class="container-fluid">
 
     <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+
+        <!-- <div class="area"></div> -->
+        <nav class="main-menu  d-none d-md-block bg-light h-100">
             <div class="sidebar-sticky">
-                <ul class="nav flex-column">
+                <!-- <ul class="nav flex-column"> -->
+
+                <ul>
 
                     <!-- Vendas -->
-                    <li class="nav-item" data-toggle="collapse" data-target="#collapseGerenciarVendas" aria-expanded="false"
+                    <li class="has-subnav" data-toggle="collapse" data-target="#collapseGerenciarVendas" aria-expanded="false"
                         aria-controls="collapseGerenciarVendas">
-                        <a class="nav-link" href="#">
-                            <span data-feather="layers"></span>
-                            Gerenciar Vendas
+                        <a href="#">
+                            <i class="fa fa-home fa-2x"><i data-feather="shopping-cart"></i>
+                            </i>
+                            <span class="nav-text">
+                                Gerenciar Vendas
+                            </span>
+
                         </a>
                     </li>
+
                     <div class="collapse" id="collapseGerenciarVendas">
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=registrar_venda">Realizar Venda</a>
+                        <li class="has-subnav">
+                            
+                                <a href="?funcao=registrar_venda">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">
+                                    Realizar Venda</a>
+                            </span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=listar_venda">Listar Vendas</a>
+                        </li>
+                        <li class="has-subnav">
+                            <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">
+                                <a class="nav-text" href="?funcao=listar_venda"> Listar Vendas</a>
+                            </span>
                         </li>
                     </div>
 
 
                     <!-- Funcionarios -->
-                    <li class="nav-item" data-toggle="collapse" data-target="#collapseGerenciarFuncionario"
+                    <li class="has-subnav" data-toggle="collapse" data-target="#collapseGerenciarFuncionario"
                         aria-expanded="false" aria-controls="collapseGerenciarFuncionario">
-                        <a class="nav-link active" href="#">
-                            <span data-feather="home"></span>
-                            Gerenciar Funcionários <span class="sr-only">(current)</span>
+                        <a href="#">
+                            <i class="fa fa-home fa-2x"><i data-feather="users"></i></i>
+                            <span class="nav-text">
+                                Gerenciar Funcionários
+                            </span>
+
                         </a>
                     </li>
 
                     <div class="collapse" id="collapseGerenciarFuncionario">
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=cadastrar_funcionario">Adicionar Funcionário</a>
+
+                        <li class="has-subnav">
+                           
+                                <a href="?funcao=cadastrar_funcionario">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">
+                                Adicionar Funcionário</a>
+                            </span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Alterar dados do Funcionário</a>
+                        <li class="has-subnav">
+                            <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">
+                                <a class="nav-link">Alterar dados do Funcionário</a>
+                            </span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=excluir_funcionario">Excluir Funcionário</a>
+                        <li class="has-subnav">
+                            
+                                <a href="?funcao=excluir_funcionario">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Excluir Funcionário</a>
+                            </span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=alterar_permissao">Alterar permissão do Funcionário</a>
+                        <li class="has-subnav">
+                          
+                                <a href="?funcao=alterar_permissao">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">
+                                Alterar permissão do Funcionário</a>
+                            </span>
                         </li>
                     </div>
 
                     <!-- Produtos -->
-                    <li class="nav-item" data-toggle="collapse" data-target="#collapseGerenciarProduto" aria-expanded="false"
+                    <li class="has-subnav" data-toggle="collapse" data-target="#collapseGerenciarProduto" aria-expanded="false"
                         aria-controls="collapseGerenciarProduto">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Gerenciar Produtos
+                        <a href="#">
+                            <i class="fa fa-home fa-2x"><i data-feather="shopping-bag"></i></i>
+                                <span class="nav-text">
+                                    Gerenciar Produtos
+                                </span>
+
                         </a>
                     </li>
                     <div class="collapse" id="collapseGerenciarProduto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=cadastrar_produto">Adicionar Produto</a>
+                        <li class="has-subnav">
+                            
+                                <a href="?funcao=cadastrar_produto">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">
+                                Adicionar Produto</a>
+                            </span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=excluir_produto">Excluir Produto</a>
+                        <li class="has-subnav">
+                           
+                                <a href="?funcao=excluir_produto">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Excluir Produto</a>
+                            </span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=cadastrar_estoque">Adicionar Estoque de um Produto</a>
+                        <li class="has-subnav">
+                           
+                                <a href="?funcao=cadastrar_estoque">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Adicionar Estoque de um Produto</a>
+                            </span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=alterar_estoque">Alterar Estoque de um Produto</a>
+                        <li class="has-subnav">
+                           
+                                <a href="?funcao=alterar_estoque">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Alterar Estoque de um Produto</a>
+                            </span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=excluir_estoque">Excluir Estoque de um Produto</a>
+                        <li class="has-subnav">
+                            
+                                <a href="?funcao=excluir_estoque">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">        
+                                Excluir Estoque de um Produto</a>
+                            </span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Alterar descrição de um Produto</a>
+                        <li class="has-subnav">
+                           
+                                <a class="nav-link">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Alterar descrição de um Produto</a>
+                            </span>
                         </li>
                     </div>
 
                     <!-- Clientes -->
-                    <li class="nav-item" data-toggle="collapse" data-target="#collapseGerenciarClientes" aria-expanded="false"
-                        aria-controls="collapseGerenciarClientes">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Gerenciar Clientes
+                    <li class="has-subnav" data-toggle="collapse" data-target="#collapseGerenciarClientes"
+                        aria-expanded="false" aria-controls="collapseGerenciarClientes">
+                        <a href="#">
+                            <i class="fa fa-home fa-2x"><i data-feather="user"></i></i>
+                            <span class="nav-text">
+                                Gerenciar Clientes
+                            </span>
+
                         </a>
+
+
+
                     </li>
                     <div class="collapse" id="collapseGerenciarClientes">
 
                     </div>
 
                     <!-- Fornecedores -->
-                    <li class="nav-item" data-toggle="collapse" data-target="#collapseGerenciarFornecedores"
+                    <li class="has-subnav" data-toggle="collapse" data-target="#collapseGerenciarFornecedores"
                         aria-expanded="false" aria-controls="collapseGerenciarFornecedores">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Gerenciar Fornecedores
+                        <a href="#">
+                            <i class="fa fa-home fa-2x"><i data-feather="truck"></i></i>
+                            <span class="nav-text">
+                                Gerenciar Fornecedores
+                            </span>
+
                         </a>
                     </li>
                     <div class="collapse" id="collapseGerenciarFornecedores">
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=cadastrar_fornecedor">Adicionar Fornecedor</a>
+                        <li class="has-subnav">
+                           
+                                <a href="?funcao=cadastrar_fornecedor">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">
+                                
+                                Adicionar Fornecedor</a>
+                            </span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=excluir_fornecedor">Excluir Fornecedor</a>
+                        <li class="has-subnav">
+                           
+                                <a href="?funcao=excluir_fornecedor">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Excluir Fornecedor</a>
+                            </span>
                         </li>
                     </div>
 
                     <!-- Categorias -->
-                    <li class="nav-item" data-toggle="collapse" data-target="#collapseGerenciarCategoria"
+                    <li class="has-subnav" data-toggle="collapse" data-target="#collapseGerenciarCategoria"
                         aria-expanded="false" aria-controls="collapseGerenciarCategoria">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Gerenciar Categoria
+                        <a href="#">
+                            <i class="fa fa-home fa-2x"><i data-feather="list"></i></i>
+                            <span class="nav-text">
+                                Gerenciar Categorias
+                            </span>
+
                         </a>
                     </li>
                     <div class="collapse" id="collapseGerenciarCategoria">
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=cadastrar_categoria">Adicionar Categoria</a>
+                        <li class="has-subnav">
+                           
+                                <a href="?funcao=cadastrar_categoria">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Adicionar Categoria</a>
+                            </span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?funcao=excluir_categoria">Excluir Categoria</a>
+
+                        <li class="has-subnav">
+                           
+                                <a href="?funcao=excluir_categoria">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Excluir Categoria</a>
+                            </span>
                         </li>
                     </div>
 
                     <!-- Relatorios -->
-                    <li class="nav-item" data-toggle="collapse" data-target="#collapseGerenciarRelatorios"
+                    <li class="has-subnav" data-toggle="collapse" data-target="#collapseGerenciarRelatorios"
                         aria-expanded="false" aria-controls="collapseGerenciarRelatorios">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Gerenciar Relatorios
+                        <a href="#">
+                            <i class="fa fa-home fa-2x"><i data-feather="file-text"></i></i>
+                            <span class="nav-text">
+                                Gerenciar Relatórios
+                            </span>
+
                         </a>
                     </li>
                     <div class="collapse" id="collapseGerenciarRelatorios">
