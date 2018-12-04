@@ -24,9 +24,11 @@
 
                     <div class="collapse" id="collapseGerenciarVendas">
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
+                            
+                                <a href="?funcao=registrar_venda">
+                                <i class="fa fa-home fa-2x"></i>
                             <span class="nav-text">
-                                <a href="?funcao=registrar_venda">Realizar Venda</a>
+                                    Realizar Venda</a>
                             </span>
                         </li>
 
@@ -55,9 +57,11 @@
                     <div class="collapse" id="collapseGerenciarFuncionario">
 
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
+                           
+                                <a href="?funcao=cadastrar_funcionario">
+                                <i class="fa fa-home fa-2x"></i>
                             <span class="nav-text">
-                                <a href="?funcao=cadastrar_funcionario">Adicionar Funcionário</a>
+                                Adicionar Funcionário</a>
                             </span>
                         </li>
                         <li class="has-subnav">
@@ -67,15 +71,19 @@
                             </span>
                         </li>
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
-                            <span class="nav-text">
-                                <a href="?funcao=excluir_funcionario">Excluir Funcionário</a>
+                            
+                                <a href="?funcao=excluir_funcionario">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Excluir Funcionário</a>
                             </span>
                         </li>
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
+                          
+                                <a href="?funcao=alterar_permissao">
+                                <i class="fa fa-home fa-2x"></i>
                             <span class="nav-text">
-                                <a href="?funcao=alterar_permissao">Alterar permissão do Funcionário</a>
+                                Alterar permissão do Funcionário</a>
                             </span>
                         </li>
                     </div>
@@ -93,39 +101,51 @@
                     </li>
                     <div class="collapse" id="collapseGerenciarProduto">
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
+                            
+                                <a href="?funcao=cadastrar_produto">
+                                <i class="fa fa-home fa-2x"></i>
                             <span class="nav-text">
-                                <a href="?funcao=cadastrar_produto">Adicionar Produto</a>
+                                Adicionar Produto</a>
                             </span>
                         </li>
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
-                            <span class="nav-text">
-                                <a href="?funcao=excluir_produto">Excluir Produto</a>
+                           
+                                <a href="?funcao=excluir_produto">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Excluir Produto</a>
                             </span>
                         </li>
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
-                            <span class="nav-text">
-                                <a href="?funcao=cadastrar_estoque">Adicionar Estoque de um Produto</a>
+                           
+                                <a href="?funcao=cadastrar_estoque">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Adicionar Estoque de um Produto</a>
                             </span>
                         </li>
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
-                            <span class="nav-text">
-                                <a href="?funcao=alterar_estoque">Alterar Estoque de um Produto</a>
+                           
+                                <a href="?funcao=alterar_estoque">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Alterar Estoque de um Produto</a>
                             </span>
                         </li>
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
-                            <span class="nav-text">
-                                <a href="?funcao=excluir_estoque">Excluir Estoque de um Produto</a>
+                            
+                                <a href="?funcao=excluir_estoque">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">        
+                                Excluir Estoque de um Produto</a>
                             </span>
                         </li>
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
-                            <span class="nav-text">
-                                <a class="nav-link">Alterar descrição de um Produto</a>
+                           
+                                <a class="nav-link">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Alterar descrição de um Produto</a>
                             </span>
                         </li>
                     </div>
@@ -161,15 +181,20 @@
                     </li>
                     <div class="collapse" id="collapseGerenciarFornecedores">
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
+                           
+                                <a href="?funcao=cadastrar_fornecedor">
+                                <i class="fa fa-home fa-2x"></i>
                             <span class="nav-text">
-                                <a href="?funcao=cadastrar_fornecedor">Adicionar Fornecedor</a>
+                                
+                                Adicionar Fornecedor</a>
                             </span>
                         </li>
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
-                            <span class="nav-text">
-                                <a href="?funcao=excluir_fornecedor">Excluir Fornecedor</a>
+                           
+                                <a href="?funcao=excluir_fornecedor">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Excluir Fornecedor</a>
                             </span>
                         </li>
                     </div>
@@ -187,16 +212,20 @@
                     </li>
                     <div class="collapse" id="collapseGerenciarCategoria">
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
-                            <span class="nav-text">
-                                <a href="?funcao=cadastrar_categoria">Adicionar Categoria</a>
+                           
+                                <a href="?funcao=cadastrar_categoria">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Adicionar Categoria</a>
                             </span>
                         </li>
 
                         <li class="has-subnav">
-                            <i class="fa fa-home fa-2x"></i>
-                            <span class="nav-text">
-                                <a href="?funcao=excluir_categoria">Excluir Categoria</a>
+                           
+                                <a href="?funcao=excluir_categoria">
+                                <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">    
+                                Excluir Categoria</a>
                             </span>
                         </li>
                     </div>
