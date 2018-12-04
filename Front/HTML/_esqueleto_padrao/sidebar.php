@@ -31,12 +31,11 @@
                                     Realizar Venda</a>
                             </span>
                         </li>
-
                         </li>
                         <li class="has-subnav">
                             <i class="fa fa-home fa-2x"></i>
                             <span class="nav-text">
-                                <a class="nav-text"> Listar Vendas</a>
+                                <a class="nav-text" href="?funcao=listar_venda"> Listar Vendas</a>
                             </span>
                         </li>
                     </div>

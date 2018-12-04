@@ -6,8 +6,9 @@
  * Time: 19:16
  */
 // Variáveis para listagem
-$listaProdutosInicial = $this->produtoFactory->listar();
+$listaProdutosInicial = $this->produtoFactory->listarProdutoEstoque();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -16,8 +17,6 @@ $listaProdutosInicial = $this->produtoFactory->listar();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="main.css" type="text/css" rel="stylesheet">
-
     <title>Brinque Feliz</title>
 
     <!-- Latest compiled and minified CSS -->
@@ -35,94 +34,52 @@ $listaProdutosInicial = $this->produtoFactory->listar();
 <?php include 'Front/HTML/_esqueleto_padrao/esqueleto.php' ?>
 
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 h-100">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Registrar Venda</h1>
 
         <div class="btn-toolbar mb-2 mb-md-0">
-            <button type="button" class="btn btn-outline-danger">Cancelar</button>
+            <form method="post">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-success" value="abrir_carrinho">Ir para carrinho de compras</button>
+                </div>
+                <input type="hidden" name="funcao" value="abrir_carrinho" />
+            </form>
         </div>
     </div>
     <div class="col-sm-9">
-
-
-    
-            <h6 for="buscaCodigoDeBarra">Código de barras do produto:</h6>
-            <input type="text" class="form-control" id="codigoDeBarras" aria-describedby="buscaCodigo" placeholder="Código do produto" oninput="JavaScript: return atualizarLista(codigoDeBarras);">
-            <h6>Selecione o produto:</h6>
-            <select class="custom-select" size="2" id="listaProdutos" name="listaProdutos">
-                <?// listar produtos
-                foreach($listaProdutosInicial as $produto) {
-                ?>
-                    <option value="<?=$produto->getCodigoDeBarras();?>"><?=$produto->getNome();?></option>
-                <?}?>
-            </select>
-            <button type="submit" class="btn btn-primary" onclick="escolherProduto()">Selecionar Produto</button>
-
-    <div id="produtoSelecionado" style="display: none;">
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Nome do Produto</th>
-                <th>Quantidade disponível</th>
-                <th>Preço de venda</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td id="nomeProduto">
-                </td>
-                <td id="quantidadeDisponivel">
-                </td>
-                <td id="precoVenda">
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-
         <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
-
+        <h6 for="buscaCodigoDeBarra">Código de barras do produto:</h6>
+        <input type="text" class="form-control" id="codigoDeBarras" aria-describedby="buscaCodigo" placeholder="Código do produto" oninput="JavaScript: return atualizarLista(codigoDeBarras);">
+        <form method="POST">
+            <input type="hidden" name="funcao" value="adicionar_carrinho" />
+            <div class="form-group">
+                <h6>Selecione o produto:</h6>
+                <select class="custom-select" size="4" id="produtoVenda" name="produtoVenda">
+                    <?// listar produtos
+                    foreach($listaProdutosInicial as $produto) {
+                        ?>
+                        <option name="<?=$produto->getQuantidade();?>" value="<?=$produto->getProdutoEstoqueId();?>"><?=$produto->getNome();?> | Quantidade disponível: <?=$produto->getQuantidade();?></option>
+                    <?}?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantidade">Quantidade</label>
+                <input type="number" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade">
+            </div>
+            <button type="submit" class="btn btn-primary" value="adicionar_carrinho">Adicionar ao Carrinho de Compras</button>
+        </form>
     </div>
+
 </main>
 
 </div>
 </div>
 
-<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-
-<!-- Icons -->
-<script>
-    feather.replace()
-</script>
-
 
 <script>
-
-
-    function atualizarLista(codigoDeBarras) {
-
-    }
-
-    function escolherProduto() {
-        document.getElementById("produtoSelecionado").style.display = "";
-       var codigo =  document.getElementById("listaProdutos").value;
-       <?
-        $codigo = "<script>document.write(codigo)</script>";
-        if(isset($codigo) && $codigo != ""){
-            $produto = $this->produtoEstoqueFactory->buscarPorCodigo($codigo);
-            var_dump($produto);
-        }
-        ?>
-        document.getElementById("nomeProduto").innerHTML = "<?if(isset($produto["nome"]))echo $produto["nome"];?>";
-        document.getElementById("quantidadeDisponivel").innerHTML = "<?if(isset($produto["quantidade"]))echo $produto["quantidade"];?>";
-        document.getElementById("precoVenda").innerHTML = "<?if(isset($produto["precoVenda"]))echo $produto["precoVenda"];?>";
-    }
+// todo validar dados (QUANTIDADE)
 </script>
-
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

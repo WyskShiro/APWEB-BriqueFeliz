@@ -58,6 +58,7 @@ CREATE TABLE 'venda' (
   'desconto' float,
   'cliente_id' INTEGER,
   'funcionario_id' INTEGER,
+  'concluida' INTEGER NOT NULL,
   FOREIGN KEY('cliente_id') REFERENCES cliente('cliente_id'),
   FOREIGN KEY('funcionario_id') REFERENCES funcionario('funcionario_id')
 );

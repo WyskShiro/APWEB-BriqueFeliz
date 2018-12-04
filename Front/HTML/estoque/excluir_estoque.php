@@ -41,6 +41,7 @@
                     <tr>
                         <th>Nome do Produto</th>
                         <th>Nome do Fornecedor</th>
+                        <th>Quantidade</th>
                         <th>Deletar ?</th>
                     </tr>
                 </thead>
@@ -55,10 +56,13 @@
                 <tbody>
                     <tr>
                         <td>
-                            <?php echo $estoque["nome"] ?>
+                            <?php echo $estoque["nome"]; ?>
                         </td>
                         <td>
-                            <?php echo $estoque["nome_fantasia"] ?>
+                            <?php echo $estoque["nome_fantasia"]; ?>
+                        </td>
+                        <td>
+                            <?=$estoque["quantidade"];?>
                         </td>
                         <td>
                             <form method="post">

@@ -31,7 +31,20 @@ class Produto_vendaFactory extends AbstractFactory {
     }
 
     public function listar() {
-        $sql = "SELECT * FROM Produto_venda";
+        $sql = "SELECT * FROM produto_venda";
+        try {
+            $result = $this->db->query($sql);
+
+            $resultO = $this->queryRowsToListOfObjects($result, "Produto_venda");
+        } catch (Exception $exc) {
+            echo $exc->getMessage();
+            $resultO = null;
+        }
+        return $resultO;
+    }
+
+    public function listarVenda($vendaId) {
+        $sql = "SELECT * FROM produto_venda where venda_id =". $vendaId . ";";
         try {
             $result = $this->db->query($sql);
 
@@ -46,9 +59,10 @@ class Produto_vendaFactory extends AbstractFactory {
     public function salvar($obj) {
         $Produto_venda = $obj;
         try {
-            $sql = "INSERT INTO  Produto_venda(nome,email)" .
-                    "VALUES ( '" . $Produto_venda->getNome() . "', '"
-                    . $Produto_venda->getEmail() . "')";
+            $sql = "INSERT INTO  produto_venda(venda_id, produto_estoque_id, quantidade)" .
+                    "VALUES ( '" . $Produto_venda->getVendaId() . "', '"
+                    . $Produto_venda->getProdutoEstoqueId(). "', '"
+                    . $Produto_venda->getQuantitade(). "')";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
@@ -63,7 +77,7 @@ class Produto_vendaFactory extends AbstractFactory {
 
     public function deletar($param) {
         try {
-            $sql = "DELETE FROM Produto_venda where email= '" . $param . "'";
+            $sql = "DELETE FROM produto_venda where produto_estoque_id = " . $param . ";";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {
