@@ -6,8 +6,9 @@
  * Time: 19:16
  */
 // Variáveis para listagem
-$listaProdutosInicial = $this->produtoFactory->listar();
+$listaProdutosInicial = $this->produtoFactory->listarProdutoEstoque();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -39,50 +40,35 @@ $listaProdutosInicial = $this->produtoFactory->listar();
 
         <div class="btn-toolbar mb-2 mb-md-0">
             <button type="button" class="btn btn-outline-danger">Cancelar</button>
+            <button type="button" class="btn btn-outline-success">Ir para carrinho de compras</button>
         </div>
     </div>
-            <h6 for="buscaCodigoDeBarra">Código de barras do produto:</h6>
-            <input type="text" class="form-control" id="codigoDeBarras" aria-describedby="buscaCodigo" placeholder="Código do produto" oninput="JavaScript: return atualizarLista(codigoDeBarras);">
-            <h6>Selecione o produto:</h6>
-            <select class="custom-select" size="2" id="listaProdutos" name="listaProdutos">
-                <?// listar produtos
-                foreach($listaProdutosInicial as $produto) {
-                ?>
-                    <option value="<?=$produto->getCodigoDeBarras();?>"><?=$produto->getNome();?></option>
-                <?}?>
-            </select>
-            <button type="submit" class="btn btn-primary" onclick="escolherProduto()">Selecionar Produto</button>
-
-    <div id="produtoSelecionado" style="display: none;">
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Nome do Produto</th>
-                <th>Quantidade disponível</th>
-                <th>Preço de venda</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td id="nomeProduto">
-                </td>
-                <td id="quantidadeDisponivel">
-                </td>
-                <td id="precoVenda">
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-
     <div class="col-sm-9">
         <?php include 'Front/HTML/_esqueleto_padrao/resultado_operacao.php'?>
-
-
-
     </div>
+
+    <h6 for="buscaCodigoDeBarra">Código de barras do produto:</h6>
+    <input type="text" class="form-control" id="codigoDeBarras" aria-describedby="buscaCodigo" placeholder="Código do produto" oninput="JavaScript: return atualizarLista(codigoDeBarras);">
+    <form method="POST">
+        <input type="hidden" name="funcao" value="adicionar_carrinho" />
+        <div class="form-group">
+            <h6>Selecione o produto:</h6>
+            <select class="custom-select" size="4" id="produtoVenda" name="produtoVenda" ondblclick="moveFormulario('formulario_origem','formulario_destino','formulario_nomes',1);">
+                <?// listar produtos
+                foreach($listaProdutosInicial as $produto) {
+                    ?>
+                    <option value="<?=$produto->getProdutoEstoqueId();?>"><?=$produto->getNome();?></option>
+                <?}?>
+            </select>
+        </div>
+        <div class="form-group">
+            <h6>Informe a quantidade da venda:</h6>
+            <input type="number" class="form-control" id="quantidadeVenda" aria-describedby="buscaCodigo" placeholder="Quantidade"">
+        </div>
+        <button type="submit" class="btn btn-primary" value="adicionar_carrinho">Adicionar ao Carrinho de Compras</button>
+    </form>
+
+
 </main>
 
 </div>
@@ -91,25 +77,6 @@ $listaProdutosInicial = $this->produtoFactory->listar();
 
 <script>
 
-
-    function atualizarLista(codigoDeBarras) {
-
-    }
-
-    function escolherProduto() {
-        document.getElementById("produtoSelecionado").style.display = "";
-       var codigo =  document.getElementById("listaProdutos").value;
-       <?
-        $codigo = "<script>document.write(codigo)</script>";
-        if(isset($codigo) && $codigo != ""){
-            $produto = $this->produtoEstoqueFactory->buscarPorCodigo($codigo);
-            var_dump($produto);
-        }
-        ?>
-        document.getElementById("nomeProduto").innerHTML = "<?if(isset($produto["nome"]))echo $produto["nome"];?>";
-        document.getElementById("quantidadeDisponivel").innerHTML = "<?if(isset($produto["quantidade"]))echo $produto["quantidade"];?>";
-        document.getElementById("precoVenda").innerHTML = "<?if(isset($produto["precoVenda"]))echo $produto["precoVenda"];?>";
-    }
 </script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

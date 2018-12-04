@@ -13,27 +13,47 @@
  */
 class Produto_venda {
 
-    private Produto_venda_id;
-    private produto_estoque_id;
-    private quantitade;
+    private $venda_id;
+    private $produto_estoque_id;
+    private $quantitade;
 
-
-    public function Produto_venda($produto_estoque_id, $quantitade) {
+    /**
+     * Produto_venda constructor.
+     * @param $venda_id
+     * @param $produto_estoque_id
+     * @param $quantitade
+     */
+    public function Produto_venda($venda_id, $produto_estoque_id, $quantitade)
+    {
+        $this->venda_id = $venda_id;
         $this->produto_estoque_id = $produto_estoque_id;
         $this->quantitade = $quantitade;
     }
 
-    public function getProduto_venda_id() {
-        return $this->Produto_venda_id;
+    /**
+     * @return mixed
+     */
+    public function getVendaId()
+    {
+        return $this->venda_id;
     }
 
-    public function getProduto_estoque_id() {
+    /**
+     * @return mixed
+     */
+    public function getProdutoEstoqueId()
+    {
         return $this->produto_estoque_id;
     }
 
-    public function getQuantidade() {
+    /**
+     * @return mixed
+     */
+    public function getQuantitade()
+    {
         return $this->quantitade;
     }
+
 
 }
 

@@ -14,6 +14,8 @@ require_once("Back/model/Produto_estoqueFactory.php");
 require_once ("Back/model/Categoria.php");
 require_once ("Back/model/CategoriaFactory.php");
 
+require_once ("Back/model/ProdutosParaVenda.php");
+
 
 class Controlador {
     private $funcionarioFactory;
@@ -21,6 +23,7 @@ class Controlador {
     private $fornecedorFactory;
     private $produtoEstoqueFactory;
     private $categoriaFactory;
+    private $vendaFactory;
 
 
     public function __construct() {
@@ -35,6 +38,7 @@ class Controlador {
         $this->fornecedorFactory = new FornecedorFactory();
         $this->produtoEstoqueFactory = new Produto_estoqueFactory();
         $this->categoriaFactory = new CategoriaFactory();
+        $this->vendaFactory = new VendaFactory();
 
         $f = "";
 
@@ -160,6 +164,9 @@ class Controlador {
              */
             case 'registrar_venda':
                 $this->registrarVenda();
+                break;
+            case 'adicionar_carrinho':
+                $this->adicionarCarrinho();
                 break;
 
             default:
@@ -321,6 +328,25 @@ class Controlador {
          require 'Front/HTML/venda/cadastrar_venda.php';
      }
 
+     public function adicionarCarrinho(){
+         if(isset($_POST["produtoVenda"]) && $_POST["produtoVenda"] != "" && isset($_POST["quantidadeVenda"]) && $_POST["quantidadeVenda"] != "")
+         {
+             $_POST["produtoVenda"];
+             $_POST["quantidadeVenda"];
+             $venda = $this->vendaFactory->listarVendasNaoConcluidas();
+             var_dump($venda);
+             if($venda == false)
+             {
+                 // caso não exista uma venda em aberto será criada
+                 $venda = new Venda(-1,0,"",0,0,0,0);
+                 $result = $this->vendaFactory->Salvar($venda);
+             }
+             else
+             {
+
+             }
+         }
+     }
      /**
       * Fornecedor
       */
