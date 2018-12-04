@@ -4,7 +4,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light " style="background:#60267D">
         <a class="navbar-brand text-center" style="background:#60267D" href="index.php?#">
-        <img src="./Recursos/logo-brinque-feliz.png" class="img-fluid mx-auto " style="width:55%; backgroud:#60267D"  alt="Página Inicial">
+        <img src="./Recursos/logo-brinque-feliz.png" class="img-fluid mx-auto " style="width:55%; background:#60267D"  alt="Página Inicial">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
             aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
