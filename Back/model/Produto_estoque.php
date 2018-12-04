@@ -51,6 +51,24 @@ class Produto_estoque {
         return $this->produto_id;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getProdutoEstoqueId()
+    {
+        return $this->produto_estoque_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuantitade()
+    {
+        return $this->quantitade;
+    }
+
+
+
 }
 
 ?>

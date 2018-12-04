@@ -44,18 +44,29 @@
             </tr>
             </thead>
             <tbody>
+            <?foreach ($listaProdutosVenda as $produtoVenda){
+                //Pegar informações dos produtos já que só tem o id do produto_estoque, quantidade de itens na venda
+                $produtoEstoque = $this->produtoEstoqueFactory->buscar($produtoVenda->getProdutoEstoqueId());
+                $produto = $this->produtoFactory->buscar($produtoEstoque[0]->getProduto_id());
+                ?>
             <tr>
-                <td id="nomeProduto">
-                </td>
-                <td id="quantidadeDisponivel">
-                </td>
-                <td id="precoVenda">
-                </td>
-                <td id="precoTotal">
-                </td>
-                <td id="deletar">
+                <td id="nomeProduto[<?=$produtoVenda->getProdutoEstoqueId();?>]"><?=$produto[0]->getNome();?></td>
+
+                <td id="quantidadeDisponivel[<?=$produtoVenda->getProdutoEstoqueId();?>]"><?=$produtoVenda->getQuantitade();?></td>
+
+                <td id="precoUnitario[<?=$produtoVenda->getProdutoEstoqueId();?>]"><?=number_format(($produtoEstoque[0]->getPreco_venda()), 2, ',', '.');?></td>
+
+                <td id="precoTotal[<?=$produtoVenda->getProdutoEstoqueId();?>]"><?=number_format(($produtoVenda->getQuantitade()*$produtoEstoque[0]->getPreco_venda()), 2, ',', '.');;?></td>
+
+                <td id="deletar[<?=$produtoVenda->getProdutoEstoqueId();?>]">
+                    <form method="post">
+                        <input type="hidden" name="funcao" value="excluir_produto_carrinho">
+                        <input type="hidden" name="produto_estoque_id" value="<?=$produtoEstoque[0]->getProdutoEstoqueId();?>">
+                        <input class="btn btn-danger" type="submit" value="Deletar">
+                    </form>
                 </td>
             </tr>
+            <?}?>
             </tbody>
         </table>
         <div class="btn-toolbar mb-2 mb-md-0">

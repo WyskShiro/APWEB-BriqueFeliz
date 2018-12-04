@@ -19,7 +19,7 @@ class ProdutoFactory extends AbstractFactory {
     //put your code here
 
     public function buscar($param) {
-        $sql = "SELECT * FROM Produto where email = '" . $param . "'";
+        $sql = "SELECT * FROM produto where produto_id = " . $param . ";";
         try {
             $result = $this->db->query($sql);
 

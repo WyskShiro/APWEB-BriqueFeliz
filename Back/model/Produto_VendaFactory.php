@@ -77,7 +77,7 @@ class Produto_vendaFactory extends AbstractFactory {
 
     public function deletar($param) {
         try {
-            $sql = "DELETE FROM produto_venda where produto_estoque = '" . $param . "'";
+            $sql = "DELETE FROM produto_venda where produto_estoque_id = " . $param . ";";
             if ($this->db->exec($sql)) {
                 $result = true;
             } else {

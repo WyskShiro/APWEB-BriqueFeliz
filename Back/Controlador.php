@@ -182,6 +182,9 @@ class Controlador {
             case 'finalizar_venda':
                 $this->finalizarVenda();
                 break;
+            case 'excluir_produto_carrinho':
+                $this->removerProdutoVenda();
+                break;
 
             default:
                 $this->home();
@@ -399,16 +402,34 @@ class Controlador {
              $resultado = $this->vendaFactory->alterar(1,$venda_id);
          }
 
-         require 'Front/HTML/venda/carrinho_compras.php';
+         require 'Front/HTML/venda/cadastrar_venda.php';
      }
 
      public function removerProdutoVenda(){
-         //todo delete from produto_venda o produto_estoque_id
+         $resultado = $this->produtoEstoqueFactory->deletar($_POST["produto_estoque_id"]);
+         $venda = $this->vendaFactory->listarVendasNaoConcluidas();
+         $venda_id = $venda[0]->getVendaId();
+
+         require 'Front/HTML/venda/carrinho_compras.php';
      }
 
      public function abrirCarrinho(){
          $venda = $this->vendaFactory->listarVendasNaoConcluidas();
-         $venda_id = $venda[0]->getVendaId();
+         if($venda != false)
+         {
+             $venda_id = $venda[0]->getVendaId();
+         }
+         else
+         {
+             //não existe uma venda então deve criar;
+             $venda = new Venda(-1,0,"",0,0,0,0);
+             $result = $this->vendaFactory->Salvar($venda);
+
+             // depois é necessario pegar o novo id dessa venda
+             $venda = $this->vendaFactory->listarVendasNaoConcluidas();
+             $venda_id = $venda[0]->getVendaId();
+         }
+
          require 'Front/HTML/venda/carrinho_compras.php';
      }
 
