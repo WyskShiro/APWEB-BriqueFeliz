@@ -17,7 +17,7 @@ require_once ("Back/model/CategoriaFactory.php");
 require_once ("Back/model/ProdutosParaVenda.php");
 
 require_once ("Back/model/Produto_venda.php");
-require_once ("Back/model/Produto_vendaFactory.php");
+require_once ("Back/model/Produto_VendaFactory.php");
 
 require_once ("Back/model/Venda.php");
 require_once ("Back/model/VendaFactory.php");
