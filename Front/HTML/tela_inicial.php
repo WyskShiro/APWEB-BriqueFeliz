@@ -23,8 +23,8 @@
         <div class="row h-100">
             <div class="col-md-5 bg-light justify-content-center text-center">
 
-                <div class="my-3 py-3">
-                    <h2>Brinque Feliz</h2>
+                <div class="my-3 py-3" style="color:#60267D">
+                    <h1><strong>Brinque Feliz</strong></h1>
                     <p>Era uma vez uma grande loja...</p>
                 </div>
 
@@ -49,15 +49,15 @@
                                 <label for="cpf"><span class="glyphicon glyphicon-lock"></span></label>
                                 <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF">
                             </div>
+                            <input type="submit" class="btn btn-primary btn-block " style="background:#60267D; border-color: #60267D; color:#FFFF00" value="Entrar">
 
-                            <input type="submit" class="btn btn-primary btn-block" value="Entrar">
                         </form>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6 px-0 bg-dark"> 
-                <img src="Recursos/telaInicialImg.jpg" class="h-100 img-fluid img-thumbnailrounded mx-auto d-block" alt="Nature" style="width:100%">            
+            <div class="col px-0 bg-dark" > 
+                <img src="Recursos/pao.jpg" class="h-100 img-fluid img-thumbnailrounded mx-auto d-block" alt="Nature" style="width:100%">            
             </div>
 
 
