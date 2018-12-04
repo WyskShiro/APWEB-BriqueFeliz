@@ -123,14 +123,15 @@
                                 Adicionar Estoque de um Produto</a>
                         </span>
                     </li>
-                    <li class="has-subnav">
+                    <!-- <li class="has-subnav">
 
                         <a href="?funcao=alterar_estoque">
                             <i class="fa fa-home fa-2x"></i>
                             <span class="nav-text">
                                 Alterar Estoque de um Produto</a>
                         </span>
-                    </li>
+                    </li> -->
+                    
                     <li class="has-subnav">
 
                         <a href="?funcao=excluir_estoque">
